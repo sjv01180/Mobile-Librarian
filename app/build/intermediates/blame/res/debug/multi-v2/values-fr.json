@@ -29,6 +29,23 @@
                         "endColumns": "100",
                         "endOffsets": "3041"
                     }
+                },
+                {
+                    "source": "C:\\Users\\Sam\\.gradle\\caches\\transforms-1\\files-1.1\\zxing-android-embedded-3.6.0.aar\\c59af3784865b9cef6804f5634ec7ddc\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,161,327",
+                        "endColumns": "58,46,165,108",
+                        "endOffsets": "109,156,322,431"
+                    },
+                    "to": {
+                        "startLines": "31,32,33,34",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "3046,3105,3152,3318",
+                        "endColumns": "58,46,165,108",
+                        "endOffsets": "3100,3147,3313,3422"
+                    }
                 }
             ]
         }
