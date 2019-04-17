@@ -706,6 +706,8 @@ id centerCrop
 id center_horizontal
 id center_vertical
 id chains
+id checkIn
+id checkOut
 id checkbox
 id chronometer
 id clip_horizontal
@@ -757,6 +759,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id orderHistory
 id packed
 id parent
 id parentPanel
