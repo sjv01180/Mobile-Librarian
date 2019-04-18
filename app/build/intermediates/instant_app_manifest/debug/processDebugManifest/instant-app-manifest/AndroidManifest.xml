@@ -9,7 +9,10 @@
         android:minSdkVersion="23"
         android:targetSdkVersion="28" />
 
-    <uses-permission android:name="android.permission.CAMERA" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -44,6 +47,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.project.mobilelibrarian.CheckoutResult" />
         <activity android:name="com.project.mobilelibrarian.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,7 +65,7 @@
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:clearTaskOnLaunch="true"
-            android:screenOrientation="sensorLandscape"
+            android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />

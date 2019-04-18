@@ -692,6 +692,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addBook
 id alertTitle
 id all
 id always
@@ -767,6 +768,8 @@ id percent
 id progress_circular
 id progress_horizontal
 id radio
+id removeBook
+id result
 id right
 id right_icon
 id right_side
@@ -867,6 +870,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_checkout
 layout activity_main
 layout activity_splashscreen
 layout notification_action

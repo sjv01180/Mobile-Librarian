@@ -10,20 +10,22 @@
     android:layout_gravity="center">
 
     <Button
-        android:id="@+id/checkIn"
+        android:id="@+id/checkOut"
+        android:onClick="scanBook"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingBottom="10sp"
-        android:text="Check in"/>
+        android:text="Check out a book"/>
 
     <Button
-        android:id="@+id/checkOut"
+        android:id="@+id/checkIn"
+        android:onClick="scanBook"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingBottom="10sp"
-        android:text="Check out"/>
+        android:text="Check in a book"/>
 
     <Button
         android:id="@+id/orderHistory"
@@ -32,5 +34,23 @@
         android:layout_gravity="center"
         android:paddingBottom="10sp"
         android:text="Order History" />
+
+    <Button
+        android:id="@+id/addBook"
+        android:onClick="scanBook"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Add New Book" />
+
+    <Button
+        android:id="@+id/removeBook"
+        android:onClick="scanBook"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Remove A Book" />
 
 </LinearLayout>
