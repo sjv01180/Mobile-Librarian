@@ -13,7 +13,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class MainActivity extends AppCompatActivity {
 
     public static final String SCAN_RESULT = "com.project.mobilelibrarian.MESSAGE";
-    public static Intent scanReciever;
+    public static Intent activty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void redirect(View v) {
+        switch(v.getId()) {
+            case (R.id.add_book):
+                activty = new Intent(MainActivity.this, AddBook.class);
+                break;
+            case (R.id.order_history):
+                activty = new Intent(MainActivity.this, BookCatalog.class);
+                break;
+            case (R.id.remove_book):
+                activty = new Intent(MainActivity.this, RemoveBook.class);
+                break;
+            default:
+                throw new RuntimeException("Unknown ID");
+
+        }
+        startActivity(activty);
+    }
+
     public void scan(View v) {
+        switch(v.getId()) {
+            case (R.id.check_out):
+                activty = new Intent(MainActivity.this, CheckoutResult.class);
+                break;
+            case (R.id.check_in):
+                activty = new Intent(MainActivity.this, CheckinResult.class);
+                break;
+            default:
+                throw new RuntimeException("Unknown ID");
+
+        }
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
         scanIntegrator.setOrientationLocked(false);
         scanIntegrator.initiateScan();
@@ -31,25 +60,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null) {
-            String scanContent = scanningResult.getContents();
-            switch(scanningResult.getFormatName())
-            {
-                case ("ITF"):
-                    scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
-                    scanReciever.putExtra(SCAN_RESULT, scanContent);
-                    startActivity(scanReciever);
-                    break;
-                case ("EAN_13"):
-                    scanReciever = new Intent(MainActivity.this, CheckinResult.class);
-                    scanReciever.putExtra(SCAN_RESULT, scanContent);
-                    startActivity(scanReciever);
-                    break;
-                default:
-                    Toast toast = Toast.makeText(getApplicationContext(),
-                            "Unknown scan data! Try again", Toast.LENGTH_LONG);
-                    toast.show();
-                    break;
-            }
+            activty.putExtra(SCAN_RESULT, scanningResult.getContents());
+            startActivity(activty);
             Log.d("SCAN RESULT", "scan successful");
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),

@@ -4,28 +4,33 @@ CREATE DATABASE IF NOT EXISTS Library;
 USE Library;
 
 CREATE table Faculty(
-        id CHAR(10) PRIMARY KEY NOT NULL,
+        Fid CHAR(10) PRIMARY KEY NOT NULL,
         Fname VARCHAR(25) NOT NULL,
         Lname VARCHAR(25) NOT NULL);
 
 CREATE table Student(
-        id CHAR(10) PRIMARY KEY NOT NULL,
+        Sid CHAR(10) PRIMARY KEY NOT NULL,
         Fname VARCHAR(25) NOT NULL,
         Lname VARCHAR(25) NOT NULL);
 
 CREATE table Reserved(
         BookISBN CHAR(13) PRIMARY KEY NOT NULL,
-        CO_Date Date NOT NULL DEFAULT CURRENT_DATE,
-        CI_Date Date,
-        Due_Date Date NOT NULL,
+        CO_Date DATE NOT NULL,
+        CI_Date DATE DEFAULT NULL,
+        Due_Date DATE NOT NULL,
         Fid CHAR(10));
 
 CREATE table Checks(
         BookISBN CHAR(13) PRIMARY KEY NOT NULL,
-        CO_Date Date NOT NULL DEFAULT CURRENT_DATE,
-        CI_Date Date,
-        Due_Date Date NOT NULL,
-        Sid CHAR(10));
+        CO_Date DATE NOT NULL,
+        CI_Date DATE DEFAULT NULL,
+        Due_Date DATE NOT NULL,
+        Sid CHAR(10),
+		Fid CHAR(10),
+		
+		CONSTRAINT `Checks_sidfk_1` FOREIGN KEY (`Sid`) REFERENCES `Student`(`Sid`),
+		CONSTRAINT `Checks_fidfk_1` FOREIGN KEY (`Fid`) REFERENCES `Faculty`(`Fid`));
+
 CREATE table Books(
         BookISBN CHAR(13) PRIMARY KEY NOT NULL,
         Title VARCHAR(30) NOT NULL,

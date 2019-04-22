@@ -61,7 +61,7 @@ public class CheckoutResult extends AppCompatActivity {
                     studentID.setText(scanningResult.getContents());
                     break;
                 case "EAN_13":
-                    isbn = findViewById(R.id.bookISBN);
+                    isbn = findViewById(R.id.book_isbn);
                     isbn.setText(scanningResult.getContents());
                     break;
                 default:

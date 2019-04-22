@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CheckinResult"></activity>
+        <activity android:name=".RemoveBook"></activity>
+        <activity android:name=".AddBook" />
+        <activity android:name=".OrderDetails" />
+        <activity android:name=".BookCatalog" />
+        <activity android:name=".CheckinResult" />
         <activity android:name=".CheckoutResult" />
         <activity android:name=".MainActivity">
             <intent-filter>

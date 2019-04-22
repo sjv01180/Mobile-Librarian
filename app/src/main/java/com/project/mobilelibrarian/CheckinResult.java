@@ -20,10 +20,10 @@ public class CheckinResult extends AppCompatActivity {
         String bookisbn = fromMain.getStringExtra(MainActivity.SCAN_RESULT);
 
         studentID = findViewById(R.id.student_id);
-        isbn = findViewById(R.id.bookISBN);
+        isbn = findViewById(R.id.book_isbn);
         isbn.setText(bookisbn);
 
-        new CountDownTimer(6000, 1000) {
+        new CountDownTimer(5000, 1000) {
 
             public void onTick(long millisUntilFinished) {
             }

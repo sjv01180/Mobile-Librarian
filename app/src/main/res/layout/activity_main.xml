@@ -10,25 +10,26 @@
     android:layout_gravity="center">
 
     <Button
-        android:id="@+id/checkOut"
+        android:id="@+id/check_out"
         android:onClick="scan"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingBottom="10sp"
-        android:text="Check out a book"/>
+        android:text="Check out a book (scan id)"/>
 
     <Button
-        android:id="@+id/checkIn"
+        android:id="@+id/check_in"
         android:onClick="scan"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingBottom="10sp"
-        android:text="Check in a book"/>
+        android:text="Check in a book (scan book)"/>
 
     <Button
-        android:id="@+id/orderHistory"
+        android:id="@+id/order_history"
+        android:onClick="redirect"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_gravity="center"
@@ -36,8 +37,8 @@
         android:text="Order History" />
 
     <Button
-        android:id="@+id/addBook"
-        android:onClick="scan"
+        android:id="@+id/add_book"
+        android:onClick="redirect"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_gravity="center"
@@ -45,12 +46,12 @@
         android:text="Add New Book" />
 
     <Button
-        android:id="@+id/removeBook"
-        android:onClick="scan"
+        android:id="@+id/remove_book"
+        android:onClick="redirect"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_gravity="center"
         android:paddingBottom="10sp"
-        android:text="Remove A Book" />
+        android:text="Remove A Book (scan book)" />
 
 </LinearLayout>

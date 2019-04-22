@@ -42,7 +42,7 @@
             </RelativeLayout>
 
             <Button
-                android:id="@+id/scanID"
+                android:id="@+id/scan_id"
                 android:onClick="scan"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/bookISBN"
+                android:id="@+id/book_isbn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -86,7 +86,7 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/scanBook"
+            android:id="@+id/scan_book"
             android:onClick="scan"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
             android:textSize="30sp"/>
 
         <TextView
-            android:id="@+id/bookTitle"
+            android:id="@+id/book_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -125,7 +125,7 @@
             android:textSize="30sp"/>
 
         <TextView
-            android:id="@+id/bookAuthor"
+            android:id="@+id/book_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -145,11 +145,11 @@
             android:textSize="30sp"/>
 
         <TextView
-            android:id="@+id/bookGenre"
+            android:id="@+id/book_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="Non-Fiction"
+            android:text="[genre]"
             android:textSize="30sp" />
         </RelativeLayout>
     </LinearLayout>
@@ -180,7 +180,7 @@
 
 
             <TextView
-                android:id="@+id/co-date"
+                android:id="@+id/co_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -200,7 +200,7 @@
             android:textSize="30sp"/>
 
             <TextView
-            android:id="@+id/ci-date"
+            android:id="@+id/due_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

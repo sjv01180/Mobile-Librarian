@@ -14,7 +14,7 @@ public class Splashscreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
 
-        final ImageView imageView = findViewById(R.id.imageView);
+        final ImageView imageView = findViewById(R.id.image_view);
         final Animation animation_1 = AnimationUtils.loadAnimation(getBaseContext(),R.anim.rotate);
         final Animation animation_2 = AnimationUtils.loadAnimation(getBaseContext(),R.anim.antirotate);
         final Animation animation_3 = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);
