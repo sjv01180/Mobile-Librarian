@@ -32,10 +32,6 @@
         android:name="android.hardware.wifi"
         android:required="false" />
 
-    <meta-data
-        android:name="android.support.VERSION"
-        android:value="25.3.1" />
-
     <application
         android:allowBackup="true"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
@@ -46,6 +42,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.project.mobilelibrarian.CheckinResult" />
         <activity android:name="com.project.mobilelibrarian.CheckoutResult" />
         <activity android:name="com.project.mobilelibrarian.MainActivity" >
             <intent-filter>

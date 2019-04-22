@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String SCAN_RESULT = "com.project.mobilelibrarian.MESSAGE";
     public static Intent scanReciever;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
                 break;
             case (R.id.checkIn):
-                scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
+                scanReciever = new Intent(MainActivity.this, CheckinResult.class);
                 break;
             case (R.id.addBook):
                 scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
@@ -49,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null) {
             String scanContent = scanningResult.getContents();
-            scanReciever.putExtra(SCAN_RESULT,  scanContent);
+            scanReciever.putExtra(SCAN_RESULT, scanContent);
             startActivity(scanReciever);
             Log.d("SCAN RESULT", "scan successful");
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),
-                    "No scan data received! Try Again", Toast.LENGTH_SHORT);
+                    "No scan data received! Try Again", Toast.LENGTH_LONG);
             toast.show();
         }
     }

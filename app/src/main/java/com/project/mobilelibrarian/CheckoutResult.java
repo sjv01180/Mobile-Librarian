@@ -16,19 +16,33 @@ import org.w3c.dom.Text;
 
 public class CheckoutResult extends AppCompatActivity {
 
-    TextView result;
-    String res = "If you see this, then it didn't work";
+    TextView studentID;
+    String res = "0000000000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
         Intent scan = getIntent();
-        result = findViewById(R.id.result);
-        result.setText(scan.getStringExtra(MainActivity.SCAN_RESULT));
+        studentID = findViewById(R.id.student_id);
+        res = scan.getStringExtra(MainActivity.SCAN_RESULT);
+        studentID.setText(res);
     }
 
-    protected void scan(View v) {
+    public void scan(View v) {
+        IntentIntegrator scanIntegrator = new IntentIntegrator(this);
+        scanIntegrator.setOrientationLocked(false);
+        scanIntegrator.initiateScan();
+    }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanningResult != null) {
+            res = scanningResult.getContents();
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No scan data received! ScanType = " + scanningResult.getFormatName(), Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
 }
