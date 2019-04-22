@@ -21,25 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void scanBook(View v) {
-
-        switch(v.getId()) {
-
-            case (R.id.checkOut):
-                scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
-                break;
-            case (R.id.checkIn):
-                scanReciever = new Intent(MainActivity.this, CheckinResult.class);
-                break;
-            case (R.id.addBook):
-                scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
-                break;
-            case(R.id.removeBook):
-                scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
-                break;
-            default:
-                throw new RuntimeException("unknown input error");
-        }
+    public void scan(View v) {
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
         scanIntegrator.setOrientationLocked(false);
         scanIntegrator.initiateScan();
@@ -50,8 +32,24 @@ public class MainActivity extends AppCompatActivity {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null) {
             String scanContent = scanningResult.getContents();
-            scanReciever.putExtra(SCAN_RESULT, scanContent);
-            startActivity(scanReciever);
+            switch(scanningResult.getFormatName())
+            {
+                case ("ITF"):
+                    scanReciever = new Intent(MainActivity.this, CheckoutResult.class);
+                    scanReciever.putExtra(SCAN_RESULT, scanContent);
+                    startActivity(scanReciever);
+                    break;
+                case ("EAN_13"):
+                    scanReciever = new Intent(MainActivity.this, CheckinResult.class);
+                    scanReciever.putExtra(SCAN_RESULT, scanContent);
+                    startActivity(scanReciever);
+                    break;
+                default:
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Unknown scan data! Try again", Toast.LENGTH_LONG);
+                    toast.show();
+                    break;
+            }
             Log.d("SCAN RESULT", "scan successful");
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),

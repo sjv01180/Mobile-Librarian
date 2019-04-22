@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/checkOut"
-        android:onClick="scanBook"
+        android:onClick="scan"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -20,7 +20,7 @@
 
     <Button
         android:id="@+id/checkIn"
-        android:onClick="scanBook"
+        android:onClick="scan"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/addBook"
-        android:onClick="scanBook"
+        android:onClick="scan"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_gravity="center"
@@ -46,7 +46,7 @@
 
     <Button
         android:id="@+id/removeBook"
-        android:onClick="scanBook"
+        android:onClick="scan"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_gravity="center"

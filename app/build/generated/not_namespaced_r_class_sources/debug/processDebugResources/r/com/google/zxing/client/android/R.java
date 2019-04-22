@@ -40,21 +40,21 @@ public final class R {
         private id() {}
 
         public static final int centerCrop = 0x7f07002a;
-        public static final int fitCenter = 0x7f070048;
-        public static final int fitXY = 0x7f070049;
-        public static final int zxing_back_button = 0x7f0700a9;
-        public static final int zxing_barcode_scanner = 0x7f0700aa;
-        public static final int zxing_barcode_surface = 0x7f0700ab;
-        public static final int zxing_camera_closed = 0x7f0700ac;
-        public static final int zxing_camera_error = 0x7f0700ad;
-        public static final int zxing_decode = 0x7f0700ae;
-        public static final int zxing_decode_failed = 0x7f0700af;
-        public static final int zxing_decode_succeeded = 0x7f0700b0;
-        public static final int zxing_possible_result_points = 0x7f0700b1;
-        public static final int zxing_preview_failed = 0x7f0700b2;
-        public static final int zxing_prewiew_size_ready = 0x7f0700b3;
-        public static final int zxing_status_view = 0x7f0700b4;
-        public static final int zxing_viewfinder_view = 0x7f0700b5;
+        public static final int fitCenter = 0x7f070049;
+        public static final int fitXY = 0x7f07004a;
+        public static final int zxing_back_button = 0x7f0700aa;
+        public static final int zxing_barcode_scanner = 0x7f0700ab;
+        public static final int zxing_barcode_surface = 0x7f0700ac;
+        public static final int zxing_camera_closed = 0x7f0700ad;
+        public static final int zxing_camera_error = 0x7f0700ae;
+        public static final int zxing_decode = 0x7f0700af;
+        public static final int zxing_decode_failed = 0x7f0700b0;
+        public static final int zxing_decode_succeeded = 0x7f0700b1;
+        public static final int zxing_possible_result_points = 0x7f0700b2;
+        public static final int zxing_preview_failed = 0x7f0700b3;
+        public static final int zxing_prewiew_size_ready = 0x7f0700b4;
+        public static final int zxing_status_view = 0x7f0700b5;
+        public static final int zxing_viewfinder_view = 0x7f0700b6;
     }
     public static final class layout {
         private layout() {}
