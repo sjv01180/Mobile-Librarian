@@ -19,13 +19,13 @@ public class OrderDetails extends AppCompatActivity {
 
         Intent orderRow = getIntent();
         bookISBN = findViewById(R.id.book_isbn);
-        bookISBN.setText(orderRow.getStringExtra(BookCatalog.BOOK_ISBN));
+        bookISBN.setText(orderRow.getStringExtra(OrderCatalog.BOOK_ISBN));
 
         title = findViewById(R.id.book_title);
-        title.setText(orderRow.getStringExtra(BookCatalog.BOOK_TITLE));
+        title.setText(orderRow.getStringExtra(OrderCatalog.BOOK_TITLE));
 
         ownerID = findViewById(R.id.owner_id);
-        ownerID.setText(orderRow.getStringExtra(BookCatalog.BOOK_OWNER));
+        ownerID.setText(orderRow.getStringExtra(OrderCatalog.BOOK_OWNER));
 
     }
 }

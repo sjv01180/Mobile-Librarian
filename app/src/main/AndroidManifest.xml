@@ -16,7 +16,7 @@
         <activity android:name=".RemoveBook"></activity>
         <activity android:name=".AddBook" />
         <activity android:name=".OrderDetails" />
-        <activity android:name=".BookCatalog" />
+        <activity android:name=".OrderCatalog" />
         <activity android:name=".CheckinResult" />
         <activity android:name=".CheckoutResult" />
         <activity android:name=".MainActivity">

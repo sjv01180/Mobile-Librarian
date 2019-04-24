@@ -9,7 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class BookCatalog extends AppCompatActivity {
+public class OrderCatalog extends AppCompatActivity {
     public static final String BOOK_ISBN = "com.project.mobilelibrarian.BOOK_ISBN";
     public static final String BOOK_TITLE = "com.project.mobilelibrarian.BOOK_TITLE";
     public static final String BOOK_OWNER = "com.project.mobilelibrarian.BOOK_OWNER";
@@ -17,7 +17,7 @@ public class BookCatalog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catalog);
+        setContentView(R.layout.activity_order);
 
 
         addTableData();
@@ -64,7 +64,7 @@ public class BookCatalog extends AppCompatActivity {
             data.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent details = new Intent(BookCatalog.this, OrderDetails.class);
+                    Intent details = new Intent(OrderCatalog.this, OrderDetails.class);
                     details.putExtra(BOOK_ISBN, dataISBN.getText());
                     details.putExtra(BOOK_TITLE, dataTitle.getText());
                     details.putExtra(BOOK_OWNER, dataOwner.getText());

@@ -18,7 +18,8 @@ CREATE table Reserved(
         CO_Date DATE NOT NULL,
         CI_Date DATE DEFAULT NULL,
         Due_Date DATE NOT NULL,
-        Fid CHAR(10));
+        Fid CHAR(10),
+		CONSTRAINT `Checks_fidfk_1` FOREIGN KEY (`Fid`) REFERENCES `Faculty`(`Fid`));
 
 CREATE table Checks(
         BookISBN CHAR(13) PRIMARY KEY NOT NULL,
@@ -26,10 +27,7 @@ CREATE table Checks(
         CI_Date DATE DEFAULT NULL,
         Due_Date DATE NOT NULL,
         Sid CHAR(10),
-		Fid CHAR(10),
-		
-		CONSTRAINT `Checks_sidfk_1` FOREIGN KEY (`Sid`) REFERENCES `Student`(`Sid`),
-		CONSTRAINT `Checks_fidfk_1` FOREIGN KEY (`Fid`) REFERENCES `Faculty`(`Fid`));
+		CONSTRAINT `Checks_sidfk_1` FOREIGN KEY (`Sid`) REFERENCES `Student`(`Sid`));
 
 CREATE table Books(
         BookISBN CHAR(13) PRIMARY KEY NOT NULL,

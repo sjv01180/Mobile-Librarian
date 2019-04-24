@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 activty = new Intent(MainActivity.this, AddBook.class);
                 break;
             case (R.id.order_history):
-                activty = new Intent(MainActivity.this, BookCatalog.class);
+                activty = new Intent(MainActivity.this, OrderCatalog.class);
                 break;
             case (R.id.remove_book):
                 activty = new Intent(MainActivity.this, RemoveBook.class);
