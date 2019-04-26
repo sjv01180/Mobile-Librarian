@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 public class OrderDetails extends AppCompatActivity {
 
-
     TextView bookISBN;
     TextView title;
     TextView ownerID;

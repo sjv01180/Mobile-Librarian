@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuStock"
+
+    android:orientation="vertical"
+    android:padding="10sp"
+    android:layout_gravity="center">
+
+    <Button
+        android:id="@+id/add_book"
+        android:onClick="scan"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Add New Book" />
+
+    <Button
+        android:id="@+id/remove_book"
+        android:onClick="scan"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Remove A Book (scan book)" />
+
+    <Button
+        android:id="@+id/book_catalog"
+        android:onClick="redirect"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Book Catalog" />
+
+</LinearLayout>

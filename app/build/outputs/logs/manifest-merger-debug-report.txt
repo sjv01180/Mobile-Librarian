@@ -1,17 +1,20 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
+MERGED from [com.android.support:design:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\047eb13a3847aa3ceb93fd2da8f21fb9\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\95d4e12554ea3f9f77bd5e4f05dd7246\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b1f45289f9a99eeb41e3c89a8627ac73\AndroidManifest.xml:2:1-11:12
 MERGED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:17:1-56:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\5621e0e4a911d65b5a61390e51342cb7\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\ed029dcaf53fb9ed9b29409a3f96373a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\bd09ae2ee4c42a11fd5bb6d9a737e10c\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\55b20644f366d1913c5e19e7e7ccc469\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\26f4c433a18f6247322932ba8a1d0fe0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\2d1228703c686f04c875a5385681b782\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\8e5703757ba060578626e1738bf46828\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:loader:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\54d576b762f0fb462f1c4c0b2a857cad\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\dffc88aba010acceec975041dcbc5f88\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\85b7f65089d8a5da556fbbc29b4501e0\AndroidManifest.xml:17:1-22:12
@@ -23,31 +26,32 @@ MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Sam\.gradl
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\d274686861316b39ad988810bdeb489e\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1448d4d8a4f039b44b1cb9fca808c32f\AndroidManifest.xml:17:1-25:12
 MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\5355b6f015e529695537fcd999e73300\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\a6ee25650ee450d91f686cb88b4b107a\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\234b313cee968c3cd072e512ae9671ee\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\e9a92f31da0e334c3ee67015d9d5ddcb\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\7c0bc721d0d194ba8060b128fb9cab8e\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:print:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\8109be1d2caf31c6f0220e6c405e6b12\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\c0322ab692c66f4cc713956d3654003a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\9b0443fcca093bf9b7ac1ad0d57c2d75\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\93ba7069c2bd8ce22c89c7338be5325d\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\da46e44b69a0b68cce6321e7e79a3673\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\fbf760ad1fb69f32673c4ba315f7a63f\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\9b0443fcca093bf9b7ac1ad0d57c2d75\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
 	package
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:4:5-42
 		INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
 		INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-42:12
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:1-46:12
 		INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:2:11-69
@@ -62,7 +66,9 @@ MERGED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:7:22-62
 application
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:9:5-40:19
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:9:5-44:19
+MERGED from [com.android.support:design:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\047eb13a3847aa3ceb93fd2da8f21fb9\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\047eb13a3847aa3ceb93fd2da8f21fb9\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b1f45289f9a99eeb41e3c89a8627ac73\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b1f45289f9a99eeb41e3c89a8627ac73\AndroidManifest.xml:9:5-20
 MERGED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:46:5-54:19
@@ -74,7 +80,7 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Sam\.gradl
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\d274686861316b39ad988810bdeb489e\AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:15:9-35
 	android:label
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:12:9-41
 	android:roundIcon
@@ -84,63 +90,69 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Sam\.gradl
 	android:allowBackup
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:15:9-40
-activity#com.project.mobilelibrarian.RemoveBook
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:16:9-57
-	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:16:19-45
-activity#com.project.mobilelibrarian.AddBook
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:17:9-45
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:16:9-40
+	android:networkSecurityConfig
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:14:9-69
+activity#com.project.mobilelibrarian.AddUser
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:17:9-54
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:17:19-42
+activity#com.project.mobilelibrarian.RemoveBook
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:9-48
+	android:name
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:19-45
+activity#com.project.mobilelibrarian.AddBook
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:9-45
+	android:name
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:19-42
 activity#com.project.mobilelibrarian.OrderDetails
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:9-50
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:9-50
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:19-47
-activity#com.project.mobilelibrarian.BookCatalog
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:9-49
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:19-47
+activity#com.project.mobilelibrarian.OrderCatalog
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:9-50
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:19-46
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:19-47
 activity#com.project.mobilelibrarian.CheckinResult
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:9-51
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:9-51
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:19-48
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:19-48
 activity#com.project.mobilelibrarian.CheckoutResult
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:9-52
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:9-52
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:19-49
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:19-49
 activity#com.project.mobilelibrarian.MainActivity
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:9-28:20
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:9-30:20
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:19-47
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:13-27:29
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:17-69
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:25-66
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.DEFAULT
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:17-76
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:28:17-76
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:27-73
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:28:27-73
 activity#com.project.mobilelibrarian.Splashscreen
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:29:9-35:20
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:31:9-37:20
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:29:19-47
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:31:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:30:13-34:29
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:32:13-36:29
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:33:17-77
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:33:27-74
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:35:27-74
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:36:9-39:49
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:38:9-41:49
 MERGED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:47:9-53:63
 MERGED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:47:9-53:63
 	android:clearTaskOnLaunch
 		ADDED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:49:13-45
 	android:screenOrientation
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:38:13-51
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:40:13-51
 		REJECTED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:50:13-56
 	android:stateNotNeeded
 		ADDED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:51:13-42
@@ -149,13 +161,15 @@ MERGED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\
 	android:theme
 		ADDED from [com.journeyapps:zxing-android-embedded:3.6.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.6.0.aar\c59af3784865b9cef6804f5634ec7ddc\AndroidManifest.xml:52:13-54
 	tools:replace
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:39:13-46
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:41:13-46
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:37:13-74
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:39:13-74
 uses-sdk
 INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\047eb13a3847aa3ceb93fd2da8f21fb9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\047eb13a3847aa3ceb93fd2da8f21fb9\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\95d4e12554ea3f9f77bd5e4f05dd7246\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\95d4e12554ea3f9f77bd5e4f05dd7246\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b1f45289f9a99eeb41e3c89a8627ac73\AndroidManifest.xml:5:5-7:41
@@ -166,12 +180,16 @@ MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Sam\.gradle\c
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\5621e0e4a911d65b5a61390e51342cb7\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\ed029dcaf53fb9ed9b29409a3f96373a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\ed029dcaf53fb9ed9b29409a3f96373a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\bd09ae2ee4c42a11fd5bb6d9a737e10c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\bd09ae2ee4c42a11fd5bb6d9a737e10c\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\55b20644f366d1913c5e19e7e7ccc469\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\55b20644f366d1913c5e19e7e7ccc469\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\26f4c433a18f6247322932ba8a1d0fe0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\26f4c433a18f6247322932ba8a1d0fe0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\2d1228703c686f04c875a5385681b782\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\2d1228703c686f04c875a5385681b782\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\8e5703757ba060578626e1738bf46828\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\8e5703757ba060578626e1738bf46828\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:loader:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\54d576b762f0fb462f1c4c0b2a857cad\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:loader:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\54d576b762f0fb462f1c4c0b2a857cad\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\dffc88aba010acceec975041dcbc5f88\AndroidManifest.xml:20:5-44
@@ -194,6 +212,8 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Sam\.gradl
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1448d4d8a4f039b44b1cb9fca808c32f\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\5355b6f015e529695537fcd999e73300\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\5355b6f015e529695537fcd999e73300\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\a6ee25650ee450d91f686cb88b4b107a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\a6ee25650ee450d91f686cb88b4b107a\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\234b313cee968c3cd072e512ae9671ee\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\234b313cee968c3cd072e512ae9671ee\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\e9a92f31da0e334c3ee67015d9d5ddcb\AndroidManifest.xml:20:5-44
@@ -204,14 +224,14 @@ MERGED from [com.android.support:print:28.0.0] C:\Users\Sam\.gradle\caches\trans
 MERGED from [com.android.support:print:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\8109be1d2caf31c6f0220e6c405e6b12\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\c0322ab692c66f4cc713956d3654003a\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\c0322ab692c66f4cc713956d3654003a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\9b0443fcca093bf9b7ac1ad0d57c2d75\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\9b0443fcca093bf9b7ac1ad0d57c2d75\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\93ba7069c2bd8ce22c89c7338be5325d\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\93ba7069c2bd8ce22c89c7338be5325d\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\da46e44b69a0b68cce6321e7e79a3673\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\da46e44b69a0b68cce6321e7e79a3673\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\fbf760ad1fb69f32673c4ba315f7a63f\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\fbf760ad1fb69f32673c4ba315f7a63f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\9b0443fcca093bf9b7ac1ad0d57c2d75\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Sam\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\9b0443fcca093bf9b7ac1ad0d57c2d75\AndroidManifest.xml:20:5-44
 INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion

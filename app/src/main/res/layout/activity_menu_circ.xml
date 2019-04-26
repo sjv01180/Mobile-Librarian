@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuCirc"
+
+    android:orientation="vertical"
+    android:padding="10sp"
+    android:layout_gravity="center">
+
+    <Button
+        android:id="@+id/check_out"
+        android:onClick="scan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Check out a book (scan id)"/>
+
+    <Button
+        android:id="@+id/check_in"
+        android:onClick="scan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Check in a book (scan book)"/>
+
+    <Button
+        android:id="@+id/order_history"
+        android:onClick="redirect"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:paddingBottom="10sp"
+        android:text="Order History" />
+</LinearLayout>

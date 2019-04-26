@@ -15,15 +15,14 @@
         android:textSize="30sp"
         android:layout_weight="2"/>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,7 +37,6 @@
                 android:layout_alignParentEnd="true"
                 android:text="0000000000000"
                 android:textSize="30sp" />
-
         </RelativeLayout>
 
         <Button
@@ -49,65 +47,44 @@
             android:textSize="30sp"
             android:text="Scan ISBN"/>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:text="Title:"
                 android:textSize="30sp"/>
 
             <EditText
                 android:id="@+id/book_title"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="[Book Title]"
+                android:hint="[Book Title]"
                 android:textSize="30sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:text="Author:"
                 android:textSize="30sp"/>
 
             <EditText
                 android:id="@+id/book_author"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="[Authorname]"
+                android:hint="[Authorname]"
                 android:textSize="30sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Genre:"
+                android:hint="Genre:"
                 android:textSize="30sp"/>
 
             <EditText
                 android:id="@+id/book_genre"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="Non-Fiction"
+                android:hint="Non-Fiction"
                 android:textSize="30sp" />
-        </RelativeLayout>
     </LinearLayout>
 
 

@@ -1,57 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Login"
+    android:orientation="vertical">
 
-    android:orientation="vertical"
-    android:padding="10sp"
-    android:layout_gravity="center">
-
-    <Button
-        android:id="@+id/check_out"
-        android:onClick="scan"
-        android:layout_width="fill_parent"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingBottom="10sp"
-        android:text="Check out a book (scan id)"/>
+        android:text="Login"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:layout_weight="2" />
 
-    <Button
-        android:id="@+id/check_in"
-        android:onClick="scan"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingBottom="10sp"
-        android:text="Check in a book (scan book)"/>
+        android:orientation="horizontal"
+        android:layout_weight="0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username: "
+            android:textSize="30sp"/>
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="text"
+            android:hint="username"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password: "
+            android:textSize="30sp"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:inputType="textPassword"
+            android:hint="password"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/order_history"
+        android:id="@+id/register"
+        android:onClick="redirect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Register an account"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
         android:onClick="redirect"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_gravity="center"
-        android:paddingBottom="10sp"
-        android:text="Order History" />
-
-    <Button
-        android:id="@+id/add_book"
-        android:onClick="redirect"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_gravity="center"
-        android:paddingBottom="10sp"
-        android:text="Add New Book" />
-
-    <Button
-        android:id="@+id/remove_book"
-        android:onClick="redirect"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_gravity="center"
-        android:paddingBottom="10sp"
-        android:text="Remove A Book (scan book)" />
+        android:textSize="30sp"
+        android:text="login"
+        android:layout_weight="1"/>
 
 </LinearLayout>

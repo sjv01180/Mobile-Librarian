@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="[Book Title]"
+            android:hint="[Book Title]"
             android:textSize="30sp" />
     </RelativeLayout>
 
@@ -129,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="[Authorname]"
+            android:hint="[Authorname]"
             android:textSize="30sp" />
     </RelativeLayout>
 
@@ -149,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="[genre]"
+            android:hint="[genre]"
             android:textSize="30sp" />
         </RelativeLayout>
     </LinearLayout>

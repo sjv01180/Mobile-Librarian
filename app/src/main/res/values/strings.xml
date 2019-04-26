@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MobileLibrarian</string>
+    <string name="title_activity_add_user">AddUser</string>
+    <string name="title_activity_book_details">BookDetails</string>
+    <string name="title_activity_register">Register</string>
 </resources>
