@@ -26,7 +26,7 @@ import okhttp3.Response;
 public class Register extends AppCompatActivity {
 
     public final String postRegister = "http://155.42.84.51/MobLib/add_user.php";
-    public String postResult = "";
+    String postResult = "";
 
     EditText user;
     EditText pass;
@@ -62,7 +62,7 @@ public class Register extends AppCompatActivity {
                 finish();
                 break;
             case (R.id.register):
-                String msg = "Successfully added a user to database: " + user.getText().toString();
+                String msg = "";
                 if (user.getText().toString().length() == 0) {
                     msg = "ERROR: username is not set";
                 } else if (pass.getText().toString().length() == 0) {
@@ -74,6 +74,7 @@ public class Register extends AppCompatActivity {
                 } else {
                     try {
                         postRequest(postRegister);
+                        msg = postResult;
                         finish();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -86,12 +87,13 @@ public class Register extends AppCompatActivity {
             default:
                 throw new RuntimeException("Unknown ID exception");
         }
+
     }
 
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("name", user.getText().toString())
-                .add("pass", md5(pass.getText().toString()))
+                .add("pass", pass.getText().toString())
                 .add("role", role)
                 .build();
 
@@ -118,12 +120,23 @@ public class Register extends AppCompatActivity {
                 Register.this.runOnUiThread(() -> {
                     try {
                         JSONObject json = new JSONObject(myResponse);
+                        String msg = "Successfully created a user";
                         String result = json.getString("message");
-                        postResult = result;
-                        Toast exit = Toast.makeText(getApplicationContext(),
-                                "output: " + postResult, Toast.LENGTH_SHORT);
-                        exit.show();
-                        Log.d("TAG", postResult);
+                        switch(result) {
+                            case("Insertion successful"):
+                                break;
+                            case("Insertion failed"):
+                                msg = "User already exists or SQL error occured";
+                                break;
+                            default:
+                                msg = "EMPTY STRING";
+                                break;
+                        }
+                        postResult = msg;
+
+
+
+                        Log.d("TAG", "post result = " + result);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -131,24 +144,5 @@ public class Register extends AppCompatActivity {
                 });
             }
         });
-    }
-
-    public String md5(String s) {
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
-            digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuffer hexString = new StringBuffer();
-            for (int i=0; i<messageDigest.length; i++)
-                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
-
-            return hexString.toString();
-        }catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

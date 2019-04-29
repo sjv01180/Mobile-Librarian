@@ -9,6 +9,11 @@
     android:padding="10sp"
     android:layout_gravity="center">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
     <Button
         android:id="@+id/check_out"
         android:onClick="scan"
@@ -35,4 +40,5 @@
         android:layout_gravity="center"
         android:paddingBottom="10sp"
         android:text="Order History" />
+    </LinearLayout>
 </LinearLayout>

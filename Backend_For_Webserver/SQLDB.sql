@@ -37,5 +37,5 @@ CREATE table Books(
 
 CREATE table Userbase(
         Name VARCHAR(30) PRIMARY KEY NOT NULL,
-        Passwrd VARCHAR(40) NOT NULL,
-        IsCirc BIT, IsStock BIT);
+        Passwrd CHAR(60) NOT NULL,
+        Role VARCHAR(5) NOT NULL);

@@ -47,27 +47,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(activity);
                 break;
             case (R.id.login):
-                try {
-                    postRequest(postLogin);
-                    String msg = postResult;
-                    switch (msg) {
-                        case "CIRC":
-                            activity = new Intent(MainActivity.this, MenuCirc.class);
-                            startActivity(activity);
-                            break;
-                        case "STOCK":
-                            activity = new Intent(MainActivity.this, MenuStock.class);
-                            startActivity(activity);
-                            break;
-                        default:
-                            Toast error = Toast.makeText(getApplicationContext(),
-                                    "ERROR: " + postResult, Toast.LENGTH_SHORT);
-                            error.show();
-                            break;
-                    }
-                } catch(IOException e) {
-                    e.printStackTrace();
+                String msg = String.format("Login successful. Welcome %s!", user.getText().toString());
+                Toast exit;
+                if(user.getText().toString().length() == 0) {
+                    msg = "Error: username field is empty";
                 }
+
+                else if (pass.getText().toString().length() == 0) {
+                    msg = "Error: password field is empty";
+                }
+                else {
+                    try {
+                        postRequest(postLogin);
+                        msg = postResult;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                exit = Toast.makeText(getApplicationContext(),
+                        msg, Toast.LENGTH_SHORT);
+                exit.show();
                 break;
             default:
                 throw new RuntimeException("Unknown ID");
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("name", user.getText().toString())
-                .add("pass", md5(pass.getText().toString()))
+                .add("pass", pass.getText().toString())
                 .build();
 
         //RequestBody body = RequestBody.create(JSON, postBody);
@@ -104,11 +103,20 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(() -> {
                     try {
                         JSONObject json = new JSONObject(myResponse);
-                        postResult = json.getString("message");
-                        Toast exit = Toast.makeText(getApplicationContext(),
-                                "output: " + postResult, Toast.LENGTH_SHORT);
-                        exit.show();
-                        Log.d("TAG",postResult);
+                        String result = json.getString("message");
+                        switch(result) {
+                            case ("CIRC"):
+                                activity = new Intent(MainActivity.this, MenuCirc.class);
+                                startActivity(activity);
+                                break;
+                            case("STOCK"):
+                                activity = new Intent(MainActivity.this, MenuStock.class);
+                                startActivity(activity);
+                                break;
+                            default:
+                                postResult = "ERROR: failed to find user";
+                        }
+                        Log.d("TAG", "result: " + postResult);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -116,24 +124,5 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-    }
-
-    public String md5(String s) {
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
-            digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuffer hexString = new StringBuffer();
-            for (int i=0; i<messageDigest.length; i++)
-                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
-
-            return hexString.toString();
-        }catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

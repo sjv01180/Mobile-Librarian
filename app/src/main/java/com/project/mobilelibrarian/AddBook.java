@@ -74,15 +74,9 @@ public class AddBook extends AppCompatActivity {
                 } else {
                     try {
                         postRequest(postRegister);
-                        msg = postResult;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-                    Toast exit = Toast.makeText(getApplicationContext(),
-                            msg, Toast.LENGTH_SHORT);
-                    exit.show();
-                    finish();
                 }
                 Toast exit = Toast.makeText(getApplicationContext(),
                         msg, Toast.LENGTH_SHORT);
@@ -135,8 +129,24 @@ public class AddBook extends AppCompatActivity {
 
                 AddBook.this.runOnUiThread(() -> {
                     try {
+                        String msg = "Successfully added book into database";
                         JSONObject json = new JSONObject(myResponse);
-                        postResult = json.getString("message");
+                        String result = json.getString("message");
+                        switch(result) {
+                            case("Insertion successful"):
+                                break;
+                            case("Insertion failed"):
+                                msg = "Book already listed onto database";
+                                break;
+                            default:
+                                msg = "EMPTY STRING";
+                                break;
+                        }
+                        postResult = msg;
+
+                        Toast exit = Toast.makeText(getApplicationContext(),
+                                postResult, Toast.LENGTH_SHORT);
+                        exit.show();
                         Log.d("TAG",response.body().toString());
 
                     } catch (JSONException e) {
