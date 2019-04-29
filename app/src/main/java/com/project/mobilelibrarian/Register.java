@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -23,13 +25,13 @@ import okhttp3.Response;
 
 public class Register extends AppCompatActivity {
 
-    public final String postRegister= "http://155.42.84.51/MobLib/add_user.php";
-    public String postResult;
+    public final String postRegister = "http://155.42.84.51/MobLib/add_user.php";
+    public String postResult = "";
 
     EditText user;
     EditText pass;
     EditText retypePass;
-    String role = "";
+    public String role = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,29 +74,25 @@ public class Register extends AppCompatActivity {
                 } else {
                     try {
                         postRequest(postRegister);
-                        msg = postResult;
+                        finish();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    Toast exit = Toast.makeText(getApplicationContext(),
-                            msg, Toast.LENGTH_SHORT);
-                    exit.show();
-                    finish();
                 }
                 Toast exit = Toast.makeText(getApplicationContext(),
                         msg, Toast.LENGTH_SHORT);
                 exit.show();
                 break;
             default:
-                break;
+                throw new RuntimeException("Unknown ID exception");
         }
     }
 
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
-                .add("user", user.getText().toString())
-                .add("pass", pass.getText().toString())
-                .add("role", pass.getText().toString())
+                .add("name", user.getText().toString())
+                .add("pass", md5(pass.getText().toString()))
+                .add("role", role)
                 .build();
 
         //RequestBody body = RequestBody.create(JSON, postBody);
@@ -120,8 +118,12 @@ public class Register extends AppCompatActivity {
                 Register.this.runOnUiThread(() -> {
                     try {
                         JSONObject json = new JSONObject(myResponse);
-                        postResult = json.getString("message");
-                        Log.d("TAG",response.body().toString());
+                        String result = json.getString("message");
+                        postResult = result;
+                        Toast exit = Toast.makeText(getApplicationContext(),
+                                "output: " + postResult, Toast.LENGTH_SHORT);
+                        exit.show();
+                        Log.d("TAG", postResult);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -129,5 +131,24 @@ public class Register extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public String md5(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i<messageDigest.length; i++)
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+
+            return hexString.toString();
+        }catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

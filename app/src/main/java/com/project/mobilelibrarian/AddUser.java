@@ -30,7 +30,7 @@ import okhttp3.Response;
 
 public class AddUser extends AppCompatActivity {
     public final String postUrl= "http://155.42.84.51/MobLib/add_patron.php";
-    public String postResult;
+    public String postResult = "";
 
     String patronType = "";
     TextView id;

@@ -5,17 +5,15 @@ if((isset($_POST['name'])) && (isset($_POST['pass']))) {
 	$name = $_POST['name'];
     $pass = $_POST['pass'];
 	
-	$encryptPass = md5($pass);
-	
-	$CheckSQL = "SELECT IsCirc, IsStock FROM Userbase WHERE name='$name' AND pass='$encryptPass'";
+	$CheckSQL = "SELECT IsCirc, IsStock FROM Userbase WHERE name='$name' AND pass='$pass'";
  
 	$check = mysqli_fetch_assoc(mysqli_query($con,$CheckSQL));
  
 	if(isset($check)) {
-		if($check['IsCirc'] == TRUE) {
+		if($check['IsCirc'] == 1) {
 			$result->message = "CIRC";
 		}
-		else if($check['IsStock'] == TRUE) {
+		else if($check['IsStock'] == 1) {
 			$result->message = "STOCK";
 		}
 		else {

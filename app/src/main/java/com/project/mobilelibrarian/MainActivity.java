@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -24,7 +26,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     public final String postLogin= "http://155.42.84.51/MobLib/user_login.php";
-    public String postResult;
+    public String postResult = "";
 
     public static Intent activity;
 
@@ -47,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
             case (R.id.login):
                 try {
                     postRequest(postLogin);
-                    switch (postResult) {
+                    String msg = postResult;
+                    switch (msg) {
                         case "CIRC":
                             activity = new Intent(MainActivity.this, MenuCirc.class);
                             startActivity(activity);
@@ -74,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
-                .add("user", user.getText().toString())
-                .add("pass", pass.getText().toString())
+                .add("name", user.getText().toString())
+                .add("pass", md5(pass.getText().toString()))
                 .build();
 
         //RequestBody body = RequestBody.create(JSON, postBody);
@@ -102,7 +105,10 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject json = new JSONObject(myResponse);
                         postResult = json.getString("message");
-                        Log.d("TAG",response.body().toString());
+                        Toast exit = Toast.makeText(getApplicationContext(),
+                                "output: " + postResult, Toast.LENGTH_SHORT);
+                        exit.show();
+                        Log.d("TAG",postResult);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -110,5 +116,24 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public String md5(String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i<messageDigest.length; i++)
+                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+
+            return hexString.toString();
+        }catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

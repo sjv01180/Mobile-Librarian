@@ -17,11 +17,9 @@ public class CheckinResult extends AppCompatActivity {
         setContentView(R.layout.activity_checkin);
 
         Intent fromMain = getIntent();
-        String bookisbn = fromMain.getStringExtra(MainActivity.SCAN_RESULT);
 
         studentID = findViewById(R.id.student_id);
         isbn = findViewById(R.id.book_isbn);
-        isbn.setText(bookisbn);
 
         new CountDownTimer(5000, 1000) {
 

@@ -26,7 +26,7 @@ public class CheckoutResult extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
         fromMain = getIntent();
         studentID = findViewById(R.id.student_id);
-        res = fromMain.getStringExtra(MainActivity.SCAN_RESULT);
+        res = fromMain.getStringExtra(MenuCirc.SCAN_RESULT);
         studentID.setText(res);
     }
 

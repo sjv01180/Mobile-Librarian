@@ -107,7 +107,7 @@ public class AddBook extends AppCompatActivity {
 
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
-                .add("", bookTitle.getText().toString())
+                .add("", bookISBN.getText().toString())
                 .add("title", bookTitle.getText().toString())
                 .add("author", bookAuthor.getText().toString())
                 .add("genre", bookGenre.getText().toString())

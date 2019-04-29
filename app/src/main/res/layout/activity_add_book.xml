@@ -83,7 +83,7 @@
                 android:id="@+id/book_genre"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Non-Fiction"
+                android:hint="[Genre]"
                 android:textSize="30sp" />
     </LinearLayout>
 

@@ -37,5 +37,5 @@ CREATE table Books(
 
 CREATE table Userbase(
         Name VARCHAR(30) PRIMARY KEY NOT NULL,
-        Passwrd CHAR(32) NOT NULL,
-        IsCirc BOOLEAN, IsStock BOOLEAN);
+        Passwrd VARCHAR(40) NOT NULL,
+        IsCirc BIT, IsStock BIT);

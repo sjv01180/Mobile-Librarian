@@ -44,6 +44,11 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.project.mobilelibrarian.Register" />
+        <activity android:name="com.project.mobilelibrarian.MenuStock" />
+        <activity android:name="com.project.mobilelibrarian.BookDetails" />
+        <activity android:name="com.project.mobilelibrarian.BookCatalog" />
+        <activity android:name="com.project.mobilelibrarian.MenuCirc" />
         <activity android:name="com.project.mobilelibrarian.AddUser" />
         <activity android:name="com.project.mobilelibrarian.RemoveBook" />
         <activity android:name="com.project.mobilelibrarian.AddBook" />
