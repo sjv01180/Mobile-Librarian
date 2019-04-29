@@ -12,7 +12,7 @@
         android:id="@+id/book_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="[TITLE]"
+        android:text="@string/bookTitle"
         android:gravity="center"
         android:textSize="40sp"/>
 
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Book ISBN:"
+                android:text="@string/isbn"
                 android:textSize="30sp"/>
 
             <TextView
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="0000000000000"
+                android:text="@string/isbnNum"
                 android:textSize="30sp" />
 
         </RelativeLayout>
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Author:"
+                android:text="@string/author"
                 android:textSize="30sp"/>
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="[Authorname]"
+                android:text="@string/authorName"
                 android:textSize="30sp" />
         </RelativeLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Genre:"
+                android:text="@string/genre"
                 android:textSize="30sp"/>
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="Non-Fiction"
+                android:text="@string/genre2"
                 android:textSize="30sp" />
         </RelativeLayout>
 
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Last checkout:"
+                android:text="@string/lastCheckout"
                 android:textSize="30sp"/>
 
             <TextView
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="[date]"
+                android:text="@string/date"
                 android:textSize="30sp" />
         </RelativeLayout>
     </LinearLayout>
