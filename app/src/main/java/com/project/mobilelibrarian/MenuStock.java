@@ -41,13 +41,14 @@ public class MenuStock extends AppCompatActivity {
         }
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
         scanIntegrator.setOrientationLocked(false);
+        scanIntegrator.setPrompt("To begin, Scan the Barcode located on the last page of the book");
         scanIntegrator.initiateScan();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null && scanningResult.getFormatName().equals("CODABAR")) {
+        if (scanningResult != null && resultCode == RESULT_OK) {
             activty.putExtra(SCAN_RESULT, scanningResult.getContents());
             startActivity(activty);
             Log.d("SCAN RESULT", "scan successful");

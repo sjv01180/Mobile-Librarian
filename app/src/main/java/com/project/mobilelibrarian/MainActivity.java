@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,20 +25,24 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     public final String postLogin= "http://155.42.84.51/MobLib/user_login.php";
-    public String postResult = "";
+    String postResult = "";
 
     public static Intent activity;
 
-    public TextView user;
-    public TextView pass;
+    public EditText user;
+    public EditText pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user = findViewById(R.id.username);
         pass = findViewById(R.id.password);
+    }
+
+    public void clearInput(View v) {
+        user.setText("");
+        pass.setText("");
     }
 
     public void redirect(View v) {
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(activity);
                 break;
             case (R.id.login):
-                String msg = String.format("Login successful. Welcome %s!", user.getText().toString());
+                String msg = "";
                 Toast exit;
                 if(user.getText().toString().length() == 0) {
                     msg = "Error: username field is empty";
@@ -64,9 +69,10 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                exit = Toast.makeText(getApplicationContext(),
-                        msg, Toast.LENGTH_SHORT);
-                exit.show();
+                if(activity == null) {
+                    exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                    exit.show();
+                }
                 break;
             default:
                 throw new RuntimeException("Unknown ID");
@@ -104,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject json = new JSONObject(myResponse);
                         String result = json.getString("message");
+                        postResult = String.format("Login successful. Welcome %s!", user.getText().toString());
+                        clearInput(null);
                         switch(result) {
                             case ("CIRC"):
                                 activity = new Intent(MainActivity.this, MenuCirc.class);
@@ -114,8 +122,13 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(activity);
                                 break;
                             default:
-                                postResult = "ERROR: failed to find user";
+                                postResult = "ERROR: incorrect user or password";
+                                break;
                         }
+                        Toast exitPost = Toast.makeText(getApplicationContext(),
+                                postResult, Toast.LENGTH_SHORT);
+                        exitPost.show();
+
                         Log.d("TAG", "result: " + postResult);
 
                     } catch (JSONException e) {

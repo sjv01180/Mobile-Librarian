@@ -5,8 +5,9 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
+    ir-eligibility="METHOD_DELETED"
     plugin-version="3.3.2"
-    timestamp="1556570012242"
+    timestamp="1556666289112"
     token="487443623964986206"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -18,15 +19,25 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="51" />
     <task
         name="verifier"
-        duration="0" />
+        duration="5" />
+
+    <artifact
+        location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1556568275917"
+        timestamp="1556665665188"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
@@ -52,13 +63,7 @@
             location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -69,16 +74,12 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="SYNTHETIC_CONSTRUCTOR_CHANGE"
-        timestamp="1556569627129"
+        ir-eligibility="METHOD_DELETED"
+        timestamp="1556666289112"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
     </build>
-    <build
-        build-mode="COLD"
-        timestamp="1556570012242"
-        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

@@ -920,6 +920,7 @@ dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
 dimen padding
+dimen padding_body
 dimen smallFont
 dimen tableFont
 dimen tooltip_corner_radius
@@ -1100,6 +1101,7 @@ id checkbox
 id checkout
 id chronometer
 id ci_date
+id clear
 id clip_horizontal
 id clip_vertical
 id co_date

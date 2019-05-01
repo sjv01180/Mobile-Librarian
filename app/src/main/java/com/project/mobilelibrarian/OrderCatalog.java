@@ -65,9 +65,9 @@ public class OrderCatalog extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent details = new Intent(OrderCatalog.this, OrderDetails.class);
-                    details.putExtra(BOOK_ISBN, dataISBN.getText());
-                    details.putExtra(BOOK_TITLE, dataTitle.getText());
-                    details.putExtra(BOOK_OWNER, dataOwner.getText());
+                    details.putExtra(BOOK_ISBN, dataISBN.getText().toString());
+                    details.putExtra(BOOK_TITLE, dataTitle.getText().toString());
+                    details.putExtra(BOOK_OWNER, dataOwner.getText().toString());
                     startActivity(details);
                 }
             });

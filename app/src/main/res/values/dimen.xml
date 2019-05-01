@@ -3,4 +3,5 @@
     <dimen name="tableFont">20sp</dimen>
     <dimen name="smallFont">10sp</dimen>
     <dimen name="padding">10dp</dimen>
+    <dimen name="padding_body">50dp</dimen>
 </resources>

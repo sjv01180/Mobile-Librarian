@@ -31,7 +31,7 @@ public class Register extends AppCompatActivity {
     EditText user;
     EditText pass;
     EditText retypePass;
-    public String role = "";
+    String role = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,22 +122,21 @@ public class Register extends AppCompatActivity {
                         JSONObject json = new JSONObject(myResponse);
                         String msg = "Successfully created a user";
                         String result = json.getString("message");
+                        Log.d("TAG", "post result = " + result + ", role: " + role);
                         switch(result) {
                             case("Insertion successful"):
                                 break;
                             case("Insertion failed"):
-                                msg = "User already exists or SQL error occured";
+                                msg = "User already exists or SQL error occurred";
                                 break;
                             default:
                                 msg = "EMPTY STRING";
                                 break;
                         }
                         postResult = msg;
-
-
-
-                        Log.d("TAG", "post result = " + result);
-
+                        Toast exitPost = Toast.makeText(getApplicationContext(),
+                                msg, Toast.LENGTH_SHORT);
+                        exitPost.show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

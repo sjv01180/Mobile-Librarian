@@ -62,6 +62,15 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/clear"
+        android:onClick="clearInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="clear input"
+        android:layout_weight="1"/>
+
+    <Button
         android:id="@+id/register"
         android:onClick="redirect"
         android:layout_width="match_parent"

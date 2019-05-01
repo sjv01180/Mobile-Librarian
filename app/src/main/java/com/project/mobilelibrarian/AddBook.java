@@ -74,6 +74,7 @@ public class AddBook extends AppCompatActivity {
                 } else {
                     try {
                         postRequest(postRegister);
+                        finish();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -89,7 +90,7 @@ public class AddBook extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null && scanningResult.getFormatName().equals("CODABAR")) {
+        if (scanningResult != null && resultCode == RESULT_OK && scanningResult.getFormatName().equals("CODABAR")) {
             res = scanningResult.getContents();
             bookISBN.setText(scanningResult.getContents());
         } else {
@@ -101,7 +102,7 @@ public class AddBook extends AppCompatActivity {
 
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
-                .add("", bookISBN.getText().toString())
+                .add("isbn", bookISBN.getText().toString())
                 .add("title", bookTitle.getText().toString())
                 .add("author", bookAuthor.getText().toString())
                 .add("genre", bookGenre.getText().toString())
@@ -129,7 +130,7 @@ public class AddBook extends AppCompatActivity {
 
                 AddBook.this.runOnUiThread(() -> {
                     try {
-                        String msg = "Successfully added book into database";
+                        String msg = "Successfully added book into catalog";
                         JSONObject json = new JSONObject(myResponse);
                         String result = json.getString("message");
                         switch(result) {
