@@ -3,4 +3,36 @@
     <string name="title_activity_add_user">AddUser</string>
     <string name="title_activity_book_details">BookDetails</string>
     <string name="title_activity_register">Register</string>
+
+    //Add Book***********************************************
+    <string name="bi">Book Information</string>
+    <string name="isbn">Book ISBN:</string>
+    <string name="isbnNum">0000000000000</string>
+    <string name="scan">Scan ISBN</string>
+    <string name="title">Title:</string>
+    <string name="bookTitle">[Book Title]</string>
+    <string name="author">Author:</string>
+    <string name="authorName">[Authorname]</string>
+    <string name="genre">Genre:</string>
+    <string name="cancel">Cancel</string>
+    <string name="addBook">Add Book</string>
+
+    //Add User************************************************
+    <string name="techInfo">Technical Information</string>
+    <string name="SID">School ID:</string>
+    <string name="SIDNum">0000000000000</string>
+    <string name="scanIDCard">Scan ID Card</string>
+    <string name="firstName">First Name:</string>
+    <string name="firstNameEnter">[First Name]</string>
+    <string name="lastName">Last Name:</string>
+    <string name="lastNameEnter">[Last Name]</string>
+    <string name="role">Role:</string>
+    <string name="student">Student</string>
+    <string name="faculty">Faculty</string>
+    <string name="addUser">Add User</string>
+
+    //Book Details********************************************
+    <string name="genre2">[Genre]</string>
+    <string name="lastCheckout">Last checkout:</string>
+    <string name="date">[date]</string>
 </resources>
