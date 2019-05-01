@@ -26,28 +26,43 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class RemoveBook extends AppCompatActivity {
-
-    public final String postQuery= "http://155.42.84.51/MobLib/get_book.php";
-    public final String postRemove= "http://155.42.84.51/MobLib/remove_book.php";
+    public final String postBookSelect= "http://155.42.84.51/MobLib/get_book.php";
+    public final String postBookRemove= "http://155.42.84.51/MobLib/remove_book.php";
 
     TextView isbn;
+    TextView title;
+    TextView author;
+    TextView genre;
     TextView prompt;
 
-    TextView bookISBN;
-    EditText bookTitle;
-    EditText bookAuthor;
-    EditText bookGenre;
     String res = "[book isbn]";
-
-    public String postResult;
+    String postTitle = "";
+    String postAuthor = "";
+    String postGenre = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_book);
-        isbn = findViewById(R.id.book_isbn);
+
+        Intent stock = getIntent();
         prompt = findViewById(R.id.prompt);
-        isbn.setText(res);
+        isbn = findViewById(R.id.book_isbn);
+        title = findViewById(R.id.book_title);
+        author = findViewById(R.id.book_author);
+        genre = findViewById(R.id.book_genre);
+
+        try {
+            res = stock.getStringExtra(MenuStock.SCAN_RESULT);
+            postRequest(postBookSelect);
+            isbn.setText(res);
+            title.setText(postTitle);
+            author.setText(postAuthor);
+            genre.setText(postGenre);
+        } catch(IOException e) {
+            exitMessage("Failed to query barcode through catalog");
+        }
+
     }
 
     public void returnToMain(View v) {
@@ -56,10 +71,12 @@ public class RemoveBook extends AppCompatActivity {
                 finish();
                 break;
             case (R.id.insert):
-                Toast exit = Toast.makeText(getApplicationContext(),
-                        "Successfully deleted book from catalog", Toast.LENGTH_SHORT);
-                exit.show();
-                finish();
+                try {
+                    postRemove(postBookRemove);
+                    exitMessage("Successfully deleted book from catalog");
+                } catch(IOException e) {
+                    exitMessage("Failed to remove book from catalog");
+                }
                 break;
             default:
                 throw new RuntimeException("Unknown ID exception");
@@ -74,23 +91,82 @@ public class RemoveBook extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null && scanningResult.getFormatName().equals("CODABAR")) {
-            res = scanningResult.getContents();
-            isbn.setText(res);
-            prompt.setText("Are you sure you want to delete this book?");
+        if (scanningResult != null && resultCode == RESULT_OK && scanningResult.getFormatName().equals("CODABAR")) {
+            try {
+                postRequest(postBookSelect);
+                prompt.setText("Are you sure you want to delete this book?");
+            } catch(IOException e) {
+                exitMessage("Failed to query barcode through catalog");
+            }
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),
-                    "No scan data received! ScanType = " + scanningResult.getFormatName(), Toast.LENGTH_SHORT);
+                    "Barcode error: Non-existent or invalid barcode detected!", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
 
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
-                .add("", bookISBN.getText().toString())
-                .add("title", bookTitle.getText().toString())
-                .add("author", bookAuthor.getText().toString())
-                .add("genre", bookGenre.getText().toString())
+                .add("", res)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(formBody)
+                .build();
+
+        OkHttpClient client = new OkHttpClient();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                exitMessage("failed to connect to webserver");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String myResponse = response.body().string();
+
+                RemoveBook.this.runOnUiThread(() -> {
+                    try {
+                        JSONObject json = new JSONObject(myResponse);
+                        String result = json.getString("message");
+                        switch(result) {
+                            case("query successful"):
+                                res = json.getString("isbn");
+                                postTitle = json.getString("title");
+                                postAuthor = json.getString("author");
+                                postGenre = json.getString("genre");
+
+                                isbn.setText(res);
+                                title.setText(postTitle);
+                                author.setText(postAuthor);
+                                genre.setText(postGenre);
+                                break;
+                            case("query failed"):
+                                exitMessage("failed to find book from database. Try adding that book into the database first.");
+                                break;
+                            default:
+                                exitMessage("Unknown error has occurred");
+                                break;
+                        }
+                        Log.d("TAG",postTitle + " " + res);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        });
+    }
+
+    public void postRemove(String postUrl) throws IOException {
+        RequestBody formBody = new FormBody.Builder()
+                .add("isbn", res)
+                .add("title", postTitle)
+                .add("author", postAuthor)
+                .add("genre", postGenre)
                 .build();
 
         //RequestBody body = RequestBody.create(JSON, postBody);
@@ -105,7 +181,6 @@ public class RemoveBook extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                postResult = "failed to connect to webserver";
                 e.printStackTrace();
             }
 
@@ -116,7 +191,16 @@ public class RemoveBook extends AppCompatActivity {
                 RemoveBook.this.runOnUiThread(() -> {
                     try {
                         JSONObject json = new JSONObject(myResponse);
-                        postResult = json.getString("message");
+                        String result = json.getString("message");
+                        switch(result) {
+                            case ("Removal successful"):
+                                break;
+                            case("Removal failed"):
+                                break;
+                            default:
+                                exitMessage("UNKNOWN SQL ERROR");
+                                break;
+                        }
                         Log.d("TAG",response.body().toString());
 
                     } catch (JSONException e) {
@@ -125,5 +209,11 @@ public class RemoveBook extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public void exitMessage(String msg) {
+        Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        exit.show();
+        finish();
     }
 }

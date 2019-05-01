@@ -10,9 +10,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class BookCatalog extends AppCompatActivity {
-    public static final String BOOK_ISBN = "com.project.mobilelibrarian.BOOK_ISBN";
-    public static final String BOOK_TITLE = "com.project.mobilelibrarian.BOOK_TITLE";
-    public static final String BOOK_OWNER = "com.project.mobilelibrarian.BOOK_OWNER";
+    public static final String BOOK_ISBN = "com.project.mobilelibrarian.BookCatalog.BOOK_ISBN";
+    public static final String BOOK_TITLE = "com.project.mobilelibrarian.BookCatalog.BOOK_TITLE";
+    public static final String BOOK_AUTHOR = "com.project.mobilelibrarian.BookCatalog.BOOK_AUTHOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,8 @@ public class BookCatalog extends AppCompatActivity {
 
     private void addTableData() {
         float tableFont = getResources().getDimension(R.dimen.tableFont);
-        int rightPadding = (int) (getResources().getDimension(R.dimen.padding) / getResources().getDisplayMetrics().density);
+        int rightPadding = (int) (getResources().getDimension(R.dimen.padding_body) / getResources().getDisplayMetrics().density);
+        //int rightPaddingTable = (int) (getResources().getDimension(R.dimen.padding_body) / getResources().getDisplayMetrics().density);
 
         TableLayout table = findViewById(R.id.table);
         table.removeAllViews();
@@ -55,17 +56,17 @@ public class BookCatalog extends AppCompatActivity {
 
             TextView dataISBN = setTextView("[ISBN]", tableFont, rightPadding);
             TextView dataTitle = setTextView("[title]", tableFont, rightPadding);
-            TextView dataOwner = setTextView("[OwnerID]", tableFont, rightPadding);
+            TextView dataAuthor = setTextView("[OwnerID]", tableFont, rightPadding);
 
             data.addView(dataISBN);
             data.addView(dataTitle);
-            data.addView(dataOwner);
+            data.addView(dataAuthor);
 
             data.setOnClickListener(view -> {
                 Intent details = new Intent(BookCatalog.this, BookDetails.class);
-                details.putExtra(BOOK_ISBN, dataISBN.getText());
-                details.putExtra(BOOK_TITLE, dataTitle.getText());
-                details.putExtra(BOOK_OWNER, dataOwner.getText());
+                details.putExtra(BOOK_ISBN, dataISBN.getText().toString());
+                details.putExtra(BOOK_TITLE, dataTitle.getText().toString());
+                details.putExtra(BOOK_AUTHOR, dataAuthor.getText().toString());
                 startActivity(details);
             });
 

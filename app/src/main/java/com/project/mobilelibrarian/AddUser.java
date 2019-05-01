@@ -67,7 +67,7 @@ public class AddUser extends AppCompatActivity {
                 finish();
                 break;
             case (R.id.add_user):
-                String msg = "Successfully added a user: " + fname.getText().toString() + " " + lname.getText().toString();
+                String msg = "Successfully added a patron: " + fname.getText().toString() + " " + lname.getText().toString();
 
                 if(fname.getText().toString().length() == 0){
                     msg = "ERROR: first name is not set";

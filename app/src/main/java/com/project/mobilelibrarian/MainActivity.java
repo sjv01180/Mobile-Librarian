@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,20 +25,24 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     public final String postLogin= "http://155.42.84.51/MobLib/user_login.php";
-    public String postResult = "";
+    String postResult = "";
 
     public static Intent activity;
 
-    public TextView user;
-    public TextView pass;
+    public EditText user;
+    public EditText pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user = findViewById(R.id.username);
         pass = findViewById(R.id.password);
+    }
+
+    public void clearInput(View v) {
+        user.setText("");
+        pass.setText("");
     }
 
     public void redirect(View v) {
@@ -47,26 +52,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(activity);
                 break;
             case (R.id.login):
-                try {
-                    postRequest(postLogin);
-                    String msg = postResult;
-                    switch (msg) {
-                        case "CIRC":
-                            activity = new Intent(MainActivity.this, MenuCirc.class);
-                            startActivity(activity);
-                            break;
-                        case "STOCK":
-                            activity = new Intent(MainActivity.this, MenuStock.class);
-                            startActivity(activity);
-                            break;
-                        default:
-                            Toast error = Toast.makeText(getApplicationContext(),
-                                    "ERROR: " + postResult, Toast.LENGTH_SHORT);
-                            error.show();
-                            break;
+                String msg = "";
+                Toast exit;
+                if(user.getText().toString().length() == 0) {
+                    msg = "Error: username field is empty";
+                }
+
+                else if (pass.getText().toString().length() == 0) {
+                    msg = "Error: password field is empty";
+                }
+                else {
+                    try {
+                        postRequest(postLogin);
+                        msg = postResult;
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch(IOException e) {
-                    e.printStackTrace();
+                }
+                if(activity == null) {
+                    exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                    exit.show();
                 }
                 break;
             default:
@@ -78,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("name", user.getText().toString())
-                .add("pass", md5(pass.getText().toString()))
+                .add("pass", pass.getText().toString())
                 .build();
 
         //RequestBody body = RequestBody.create(JSON, postBody);
@@ -104,11 +109,27 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(() -> {
                     try {
                         JSONObject json = new JSONObject(myResponse);
-                        postResult = json.getString("message");
-                        Toast exit = Toast.makeText(getApplicationContext(),
-                                "output: " + postResult, Toast.LENGTH_SHORT);
-                        exit.show();
-                        Log.d("TAG",postResult);
+                        String result = json.getString("message");
+                        postResult = String.format("Login successful. Welcome %s!", user.getText().toString());
+                        clearInput(null);
+                        switch(result) {
+                            case ("CIRC"):
+                                activity = new Intent(MainActivity.this, MenuCirc.class);
+                                startActivity(activity);
+                                break;
+                            case("STOCK"):
+                                activity = new Intent(MainActivity.this, MenuStock.class);
+                                startActivity(activity);
+                                break;
+                            default:
+                                postResult = "ERROR: incorrect user or password";
+                                break;
+                        }
+                        Toast exitPost = Toast.makeText(getApplicationContext(),
+                                postResult, Toast.LENGTH_SHORT);
+                        exitPost.show();
+
+                        Log.d("TAG", "result: " + postResult);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -116,24 +137,5 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-    }
-
-    public String md5(String s) {
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
-            digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuffer hexString = new StringBuffer();
-            for (int i=0; i<messageDigest.length; i++)
-                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
-
-            return hexString.toString();
-        }catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

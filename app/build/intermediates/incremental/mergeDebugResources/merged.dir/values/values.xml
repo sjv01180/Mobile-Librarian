@@ -474,6 +474,7 @@
     <dimen name="notification_top_pad">10dp</dimen>
     <dimen name="notification_top_pad_large_text">5dp</dimen>
     <dimen name="padding">10dp</dimen>
+    <dimen name="padding_body">50dp</dimen>
     <dimen name="smallFont">10sp</dimen>
     <dimen name="tableFont">20sp</dimen>
     <dimen name="tooltip_corner_radius">2dp</dimen>
@@ -546,6 +547,8 @@
     <integer name="mtrl_tab_indicator_anim_duration_ms">250</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="SID">School ID:</string>
+    <string name="SIDNum">0000000000000</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -585,22 +588,46 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="addBook">Add Book</string>
+    <string name="addUser">Add User</string>
     <string name="app_name">MobileLibrarian</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="author">Author:</string>
+    <string name="authorName">[Authorname]</string>
+    <string name="bi">Book Information</string>
+    <string name="bookTitle">[Book Title]</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="cancel">Cancel</string>
     <string name="character_counter_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="date">[date]</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">android.support.design.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">android.support.design.transformation.FabTransformationSheetBehavior</string>
+    <string name="faculty">Faculty</string>
+    <string name="firstName">First Name:</string>
+    <string name="firstNameEnter">[First Name]</string>
+    <string name="genre">Genre:</string>
+    <string name="genre2">[Genre]</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">android.support.design.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="isbn">Book ISBN:</string>
+    <string name="isbnNum">0000000000000</string>
+    <string name="lastCheckout">Last checkout:</string>
+    <string name="lastName">Last Name:</string>
+    <string name="lastNameEnter">[Last Name]</string>
     <string name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="role">Role:</string>
+    <string name="scan">Scan ISBN</string>
+    <string name="scanIDCard">Scan ID Card</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="student">Student</string>
+    <string name="techInfo">Technical Information</string>
+    <string name="title">Title:</string>
     <string name="title_activity_add_user">AddUser</string>
     <string name="title_activity_book_details">BookDetails</string>
     <string name="title_activity_register">Register</string>

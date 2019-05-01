@@ -113,15 +113,15 @@ activity#com.project.mobilelibrarian.MenuCirc
 ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:9-46
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:19-43
-activity#com.project.mobilelibrarian.AddUser
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:9-45
-	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:19-42
 activity#com.project.mobilelibrarian.RemoveBook
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:9-48
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:9-48
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:19-45
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:19-45
 activity#com.project.mobilelibrarian.AddBook
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:9-45
+	android:name
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:19-42
+activity#com.project.mobilelibrarian.AddUser
 ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:9-45
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:19-42

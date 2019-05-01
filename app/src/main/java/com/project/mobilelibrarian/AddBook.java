@@ -74,15 +74,10 @@ public class AddBook extends AppCompatActivity {
                 } else {
                     try {
                         postRequest(postRegister);
-                        msg = postResult;
+                        finish();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-                    Toast exit = Toast.makeText(getApplicationContext(),
-                            msg, Toast.LENGTH_SHORT);
-                    exit.show();
-                    finish();
                 }
                 Toast exit = Toast.makeText(getApplicationContext(),
                         msg, Toast.LENGTH_SHORT);
@@ -95,7 +90,7 @@ public class AddBook extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null && scanningResult.getFormatName().equals("CODABAR")) {
+        if (scanningResult != null && resultCode == RESULT_OK && scanningResult.getFormatName().equals("CODABAR")) {
             res = scanningResult.getContents();
             bookISBN.setText(scanningResult.getContents());
         } else {
@@ -107,7 +102,7 @@ public class AddBook extends AppCompatActivity {
 
     public void postRequest(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
-                .add("", bookISBN.getText().toString())
+                .add("isbn", bookISBN.getText().toString())
                 .add("title", bookTitle.getText().toString())
                 .add("author", bookAuthor.getText().toString())
                 .add("genre", bookGenre.getText().toString())
@@ -135,8 +130,24 @@ public class AddBook extends AppCompatActivity {
 
                 AddBook.this.runOnUiThread(() -> {
                     try {
+                        String msg = "Successfully added book into catalog";
                         JSONObject json = new JSONObject(myResponse);
-                        postResult = json.getString("message");
+                        String result = json.getString("message");
+                        switch(result) {
+                            case("Insertion successful"):
+                                break;
+                            case("Insertion failed"):
+                                msg = "Book already listed onto database";
+                                break;
+                            default:
+                                msg = "EMPTY STRING";
+                                break;
+                        }
+                        postResult = msg;
+
+                        Toast exit = Toast.makeText(getApplicationContext(),
+                                postResult, Toast.LENGTH_SHORT);
+                        exit.show();
                         Log.d("TAG",response.body().toString());
 
                     } catch (JSONException e) {
