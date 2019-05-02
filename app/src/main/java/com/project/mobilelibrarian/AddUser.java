@@ -181,4 +181,10 @@ public class AddUser extends AppCompatActivity {
             }
         });
     }
+
+    public void exitMessage(String msg) {
+        Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        exit.show();
+        finish();
+    }
 }

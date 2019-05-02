@@ -55,10 +55,6 @@ public class RemoveBook extends AppCompatActivity {
         try {
             res = stock.getStringExtra(MenuStock.SCAN_RESULT);
             postRequest(postBookSelect);
-            isbn.setText(res);
-            title.setText(postTitle);
-            author.setText(postAuthor);
-            genre.setText(postGenre);
         } catch(IOException e) {
             exitMessage("Failed to query barcode through catalog");
         }
@@ -93,7 +89,9 @@ public class RemoveBook extends AppCompatActivity {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null && resultCode == RESULT_OK && scanningResult.getFormatName().equals("CODABAR")) {
             try {
+                res = scanningResult.getContents();
                 postRequest(postBookSelect);
+
                 prompt.setText("Are you sure you want to delete this book?");
             } catch(IOException e) {
                 exitMessage("Failed to query barcode through catalog");
@@ -106,8 +104,9 @@ public class RemoveBook extends AppCompatActivity {
     }
 
     public void postRequest(String postUrl) throws IOException {
+        Log.d("TAG", "res: " + res);
         RequestBody formBody = new FormBody.Builder()
-                .add("", res)
+                .add("isbn", res)
                 .build();
 
         Request request = new Request.Builder()
@@ -139,6 +138,10 @@ public class RemoveBook extends AppCompatActivity {
                                 postAuthor = json.getString("author");
                                 postGenre = json.getString("genre");
 
+                                if(res.length() == 0 || postTitle.length() == 0 || postAuthor.length() == 0 || postGenre.length() == 0) {
+                                    exitMessage("unknown book detected!");
+                                }
+
                                 isbn.setText(res);
                                 title.setText(postTitle);
                                 author.setText(postAuthor);
@@ -151,7 +154,6 @@ public class RemoveBook extends AppCompatActivity {
                                 exitMessage("Unknown error has occurred");
                                 break;
                         }
-                        Log.d("TAG",postTitle + " " + res);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -192,6 +194,7 @@ public class RemoveBook extends AppCompatActivity {
                     try {
                         JSONObject json = new JSONObject(myResponse);
                         String result = json.getString("message");
+                        Log.d("TAG", result);
                         switch(result) {
                             case ("Removal successful"):
                                 break;
@@ -201,7 +204,7 @@ public class RemoveBook extends AppCompatActivity {
                                 exitMessage("UNKNOWN SQL ERROR");
                                 break;
                         }
-                        Log.d("TAG",response.body().toString());
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
