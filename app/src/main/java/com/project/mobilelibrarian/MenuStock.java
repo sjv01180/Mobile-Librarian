@@ -14,7 +14,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class MenuStock extends AppCompatActivity {
 
     public static final String SCAN_RESULT = "com.project.mobilelibrarian.MESSAGE";
-    public static Intent activty;
+    public static Intent activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +23,17 @@ public class MenuStock extends AppCompatActivity {
     }
 
     public void redirect(View v) {
-        activty = new Intent(MenuStock.this, BookCatalog.class);
-        startActivity(activty);
+        activity = new Intent(MenuStock.this, BookCatalog.class);
+        startActivity(activity);
     }
 
     public void scan(View v) {
         switch(v.getId()) {
             case (R.id.add_book):
-                activty = new Intent(MenuStock.this, AddBook.class);
+                activity = new Intent(MenuStock.this, AddBook.class);
                 break;
             case (R.id.remove_book):
-                activty = new Intent(MenuStock.this, RemoveBook.class);
+                activity = new Intent(MenuStock.this, RemoveBook.class);
                 break;
             default:
                 throw new RuntimeException("Unknown ID");
@@ -49,13 +49,17 @@ public class MenuStock extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null && resultCode == RESULT_OK) {
-            activty.putExtra(SCAN_RESULT, scanningResult.getContents());
-            startActivity(activty);
+            activity.putExtra(SCAN_RESULT, scanningResult.getContents());
+            startActivity(activity);
             Log.d("SCAN RESULT", "scan successful");
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "No scan data or Improper scan data received! Try Again", Toast.LENGTH_LONG);
-            toast.show();
+            exitMessage("No scan data or Improper scan data received! Try Again");
         }
+    }
+
+    public void exitMessage(String msg) {
+        Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        exit.show();
+        finish();
     }
 }

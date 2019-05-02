@@ -3,6 +3,8 @@
     <string name="title_activity_add_user">AddUser</string>
     <string name="title_activity_book_details">BookDetails</string>
     <string name="title_activity_register">Register</string>
+    <string name="logout_button">Logout</string>
+    <string name="credits">Developed by Kevin Kresock and Samuel Velasquez: 2019</string>
 
     //Add Book***********************************************
     <string name="bi">Book Information</string>

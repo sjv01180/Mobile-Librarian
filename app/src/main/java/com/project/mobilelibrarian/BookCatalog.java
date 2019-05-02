@@ -33,9 +33,6 @@ public class BookCatalog extends AppCompatActivity {
     public static final String BOOK_AUTHOR = "com.project.mobilelibrarian.BookCatalog.BOOK_AUTHOR";
     public static final String BOOK_GENRE = "com.project.mobilelibrarian.BookCatalog.BOOK_GENRE";
 
-    String isbn = "";
-    String postTitle = "";
-    String postAuthor = "";
     String postGenre = "";
 
     @Override

@@ -14,26 +14,26 @@ import com.google.zxing.integration.android.IntentResult;
 public class MenuCirc extends AppCompatActivity {
 
     public static final String SCAN_RESULT = "com.project.mobilelibrarian.MESSAGE";
-    public static Intent activty;
+    public static Intent activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_circ);
+        setContentView(R.layout.activity_menu_stock);
     }
 
     public void redirect(View v) {
-        activty = new Intent(MenuCirc.this, OrderCatalog.class);
-        startActivity(activty);
+        activity = new Intent(MenuCirc.this, OrderCatalog.class);
+        startActivity(activity);
     }
 
     public void scan(View v) {
         switch(v.getId()) {
-            case (R.id.add_book):
-                activty = new Intent(MenuCirc.this, AddBook.class);
+            case (R.id.check_out):
+                activity = new Intent(MenuCirc.this, AddBook.class);
                 break;
-            case (R.id.remove_book):
-                activty = new Intent(MenuCirc.this, RemoveBook.class);
+            case (R.id.check_in):
+                activity = new Intent(MenuCirc.this, RemoveBook.class);
                 break;
             default:
                 throw new RuntimeException("Unknown ID");
@@ -41,20 +41,25 @@ public class MenuCirc extends AppCompatActivity {
         }
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
         scanIntegrator.setOrientationLocked(false);
+        scanIntegrator.setPrompt("To begin, Scan the Barcode located on the last page of the book");
         scanIntegrator.initiateScan();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null && scanningResult.getFormatName().equals("CODABAR")) {
-            activty.putExtra(SCAN_RESULT, scanningResult.getContents());
-            startActivity(activty);
+        if (scanningResult != null && resultCode == RESULT_OK) {
+            activity.putExtra(SCAN_RESULT, scanningResult.getContents());
+            startActivity(activity);
             Log.d("SCAN RESULT", "scan successful");
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "No scan data or Improper scan data received! Try Again", Toast.LENGTH_LONG);
-            toast.show();
+            exitMessage("No scan data or Improper scan data received! Try Again");
         }
+    }
+
+    public void exitMessage(String msg) {
+        Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        exit.show();
+        finish();
     }
 }

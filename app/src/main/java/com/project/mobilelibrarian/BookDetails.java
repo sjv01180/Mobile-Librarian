@@ -10,7 +10,8 @@ public class BookDetails extends AppCompatActivity {
 
     TextView bookISBN;
     TextView title;
-    TextView ownerID;
+    TextView author;
+    TextView genre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +25,11 @@ public class BookDetails extends AppCompatActivity {
         title = findViewById(R.id.book_title);
         title.setText(bookRow.getStringExtra(BookCatalog.BOOK_TITLE));
 
-        ownerID = findViewById(R.id.book_author);
-        ownerID.setText(bookRow.getStringExtra(BookCatalog.BOOK_AUTHOR));
+        author = findViewById(R.id.book_author);
+        author.setText(bookRow.getStringExtra(BookCatalog.BOOK_AUTHOR));
+
+        genre = findViewById(R.id.book_genre);
+        genre.setText(bookRow.getStringExtra(BookCatalog.BOOK_GENRE));
 
     }
 }
