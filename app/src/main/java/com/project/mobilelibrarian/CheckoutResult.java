@@ -14,11 +14,29 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class CheckoutResult extends AppCompatActivity {
+
+    DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+    Date dateCheckedOut = new Date();
+    Date dateDue = new Date();
+
+    String coDate = df.format(dateCheckedOut);
+    String deadDate = df.format(dateDue);
 
     TextView studentID;
     TextView isbn;
-    String res = "0000000000";
+    TextView title;
+    TextView author;
+    TextView genre;
+    TextView checkoutDate;
+    TextView dueDate;
+
+    String res;
     Intent fromMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +46,15 @@ public class CheckoutResult extends AppCompatActivity {
         studentID = findViewById(R.id.student_id);
         res = fromMain.getStringExtra(MenuCirc.SCAN_RESULT);
         studentID.setText(res);
+
+        isbn = findViewById(R.id.book_isbn);
+        title = findViewById(R.id.book_title);
+        author = findViewById(R.id.book_author);
+        genre = findViewById(R.id.book_genre);
+        checkoutDate = findViewById(R.id.co_date);
+        dueDate = findViewById(R.id.due_date);
+
+
     }
 
     public void returnToMain(View v) {

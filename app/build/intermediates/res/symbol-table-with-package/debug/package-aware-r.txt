@@ -1255,6 +1255,7 @@ id submenuarrow
 id submit_area
 id tabMode
 id table
+id table_switch
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
@@ -1351,7 +1352,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_book
-layout activity_add_user
+layout activity_add_patron
 layout activity_book_catalog
 layout activity_book_details
 layout activity_checkin
@@ -1448,6 +1449,7 @@ string bottom_sheet_behavior
 string cancel
 string character_counter_content_description
 string character_counter_pattern
+string credits
 string date
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -1462,6 +1464,7 @@ string isbnNum
 string lastCheckout
 string lastName
 string lastNameEnter
+string logout_button
 string mtrl_chip_close_icon_content_description
 string password_toggle_content_description
 string path_password_eye

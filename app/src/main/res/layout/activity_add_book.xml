@@ -57,6 +57,7 @@
                 android:id="@+id/book_title"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:hint="@string/bookTitle"
                 android:textSize="30sp" />
 
@@ -70,6 +71,7 @@
                 android:id="@+id/book_author"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:hint="@string/authorName"
                 android:textSize="30sp" />
 
@@ -83,6 +85,7 @@
                 android:id="@+id/book_genre"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:hint="@string/genre"
                 android:textSize="30sp" />
     </LinearLayout>

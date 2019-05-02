@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,20 +14,18 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AddUser extends AppCompatActivity {
+public class AddPatron extends AppCompatActivity {
     public final String postUrl= "http://155.42.84.51/MobLib/add_patron.php";
     public String postResult = "";
 
@@ -40,7 +37,7 @@ public class AddUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user);
+        setContentView(R.layout.activity_add_patron);
         id = findViewById(R.id.id);
         fname = findViewById(R.id.f_name);
         lname = findViewById(R.id.l_name);
@@ -149,7 +146,7 @@ public class AddUser extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 final String myResponse = response.body().string();
 
-                AddUser.this.runOnUiThread(() -> {
+                AddPatron.this.runOnUiThread(() -> {
                     String msg = "Successfully inserted patron into database";
                     try {
                         JSONObject json = new JSONObject(myResponse);

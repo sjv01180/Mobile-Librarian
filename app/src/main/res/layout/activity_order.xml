@@ -8,8 +8,17 @@
     android:padding="@dimen/padding"
     android:orientation="vertical">
 
+    <Switch
+        android:id="@+id/table_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Type: "
+        android:textOff="Students"
+        android:textOn="Faculty"
+        android:textSize="30sp"/>
+
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical">
         <HorizontalScrollView
@@ -17,10 +26,10 @@
             android:layout_height="wrap_content">
             <TableLayout
                 android:id="@+id/table"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding = "10sp">
+                android:padding = "1sp">
 
             </TableLayout>
         </HorizontalScrollView>

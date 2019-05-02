@@ -13,7 +13,7 @@ CREATE table Student(
         Fname VARCHAR(25) NOT NULL,
         Lname VARCHAR(25) NOT NULL);
 
-CREATE table Reserved(
+CREATE table Reserves(
         BookISBN CHAR(13) PRIMARY KEY NOT NULL,
         CO_Date DATE NOT NULL,
         CI_Date DATE DEFAULT NULL,

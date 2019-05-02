@@ -51,7 +51,7 @@
         <activity android:name="com.project.mobilelibrarian.MenuCirc" />
         <activity android:name="com.project.mobilelibrarian.RemoveBook" />
         <activity android:name="com.project.mobilelibrarian.AddBook" />
-        <activity android:name="com.project.mobilelibrarian.AddUser" />
+        <activity android:name="com.project.mobilelibrarian.AddPatron" />
         <activity android:name="com.project.mobilelibrarian.OrderDetails" />
         <activity android:name="com.project.mobilelibrarian.OrderCatalog" />
         <activity android:name="com.project.mobilelibrarian.CheckinResult" />

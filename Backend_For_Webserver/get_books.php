@@ -13,13 +13,16 @@ $sql = $db_con->query($query);
 
 $i = 0;
 $result = array();
-while($row = $sql->fetch_assoc())
+while($row = mysqli_fetch_assoc($sql))
 {
+
         $book->isbn = $row["BookISBN"];
         $book->title = $row["Title"];
         $book->author = $row["Author"];
         $book->genre = $row["Genre"];
-        $result[] = $book;
+        $book = $row;
+        array_push($result, $book);
+
 }
 echo json_encode($result);
 

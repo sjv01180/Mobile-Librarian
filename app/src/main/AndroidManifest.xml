@@ -21,7 +21,7 @@
         <activity android:name=".MenuCirc" />
         <activity android:name=".RemoveBook" />
         <activity android:name=".AddBook" />
-        <activity android:name=".AddUser" />
+        <activity android:name=".AddPatron" />
         <activity android:name=".OrderDetails" />
         <activity android:name=".OrderCatalog" />
         <activity android:name=".CheckinResult" />

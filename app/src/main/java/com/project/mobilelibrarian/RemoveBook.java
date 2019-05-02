@@ -104,7 +104,6 @@ public class RemoveBook extends AppCompatActivity {
     }
 
     public void postRequest(String postUrl) throws IOException {
-        Log.d("TAG", "res: " + res);
         RequestBody formBody = new FormBody.Builder()
                 .add("isbn", res)
                 .build();
@@ -133,13 +132,14 @@ public class RemoveBook extends AppCompatActivity {
                         String result = json.getString("message");
                         switch(result) {
                             case("query successful"):
-                                res = json.getString("isbn");
-                                postTitle = json.getString("title");
-                                postAuthor = json.getString("author");
-                                postGenre = json.getString("genre");
+                                res = json.getString("BookISBN");
+                                postTitle = json.getString("Title");
+                                postAuthor = json.getString("Author");
+                                postGenre = json.getString("Genre");
 
                                 if(res.length() == 0 || postTitle.length() == 0 || postAuthor.length() == 0 || postGenre.length() == 0) {
-                                    exitMessage("unknown book detected!");
+                                    exitMessage("unknown book detected or catalog is empty! Check the catalog in Book Catalog");
+                                    break;
                                 }
 
                                 isbn.setText(res);
@@ -148,15 +148,16 @@ public class RemoveBook extends AppCompatActivity {
                                 genre.setText(postGenre);
                                 break;
                             case("query failed"):
-                                exitMessage("failed to find book from database. Try adding that book into the database first.");
+                                exitMessage("Failed to find book from database. Try adding that book into the database first.");
                                 break;
                             default:
-                                exitMessage("Unknown error has occurred");
+                                exitMessage("Error: unknown json message string detected");
                                 break;
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        exitMessage("JSON Error: cannot parse json");
                     }
                 });
             }

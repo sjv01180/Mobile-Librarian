@@ -27,6 +27,10 @@ public class MenuStock extends AppCompatActivity {
         startActivity(activity);
     }
 
+    public void logout(View v) {
+        exitMessage("Logged out of account!", true);
+    }
+
     public void scan(View v) {
         switch(v.getId()) {
             case (R.id.add_book):
@@ -48,18 +52,18 @@ public class MenuStock extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null && resultCode == RESULT_OK) {
+        if (scanningResult != null && resultCode == RESULT_OK && scanningResult.getFormatName().equals("CODABAR")) {
             activity.putExtra(SCAN_RESULT, scanningResult.getContents());
             startActivity(activity);
             Log.d("SCAN RESULT", "scan successful");
         } else {
-            exitMessage("No scan data or Improper scan data received! Try Again");
+            exitMessage("No scan data or Improper scan data received! Try Again", false);
         }
     }
 
-    public void exitMessage(String msg) {
+    public void exitMessage(String msg, Boolean isFinished) {
         Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         exit.show();
-        finish();
+        if(isFinished) finish();
     }
 }

@@ -121,10 +121,10 @@ activity#com.project.mobilelibrarian.AddBook
 ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:9-45
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:19-42
-activity#com.project.mobilelibrarian.AddUser
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:9-45
+activity#com.project.mobilelibrarian.AddPatron
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:9-47
 	android:name
-		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:19-42
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:19-44
 activity#com.project.mobilelibrarian.OrderDetails
 ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:25:9-50
 	android:name

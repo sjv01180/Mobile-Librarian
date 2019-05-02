@@ -5,35 +5,96 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class OrderCatalog extends AppCompatActivity {
+    public static final String postGetChecks = "http://155.42.84.51/MobLib/get_checks.php";
+    public static final String postGetReserves = "http://155.42.84.51/MobLib/get_checks.php";
+
     public static final String BOOK_ISBN = "com.project.mobilelibrarian.BOOK_ISBN";
     public static final String BOOK_TITLE = "com.project.mobilelibrarian.BOOK_TITLE";
     public static final String BOOK_OWNER = "com.project.mobilelibrarian.BOOK_OWNER";
 
+    Switch switchTable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
+        switchTable = findViewById(R.id.table_switch);
+        switchTable.setChecked(false);
+        addTableData(null, 0);
 
-        addTableData();
+        switchTable.setOnCheckedChangeListener((compoundButton, b) -> {
+            if(!switchTable.isChecked()) {
+                try {
+                    postRequest(postGetChecks);
+                } catch (IOException e) {
+                    exitMessage("ERROR: cannot access orders at the moment");
+                }
+            } else {
+                try {
+                    postRequest(postGetReserves);
+                } catch (IOException e) {
+                    exitMessage("ERROR: cannot access orders at the moment");
+                }
+            }
+        });
     }
 
-    private TextView setTextView(String text, float font, int paddingRight) {
-        TextView t = new TextView(this);
-        t.setText(text);
-        t.setTextSize(TypedValue.COMPLEX_UNIT_PX, font);
-        t.setPadding(0, 0, paddingRight, 0);
-        return t;
+    public void postRequest(String postUrl) throws IOException {
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .build();
+
+        OkHttpClient client = new OkHttpClient();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                exitMessage("failed to connect to web server");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String myResponse = response.body().string();
+
+                OrderCatalog.this.runOnUiThread(() -> {
+                    try {
+                        JSONArray json = new JSONArray(myResponse);
+                        addTableData(json, json.length());
+
+                    } catch (JSONException j) {
+                        j.printStackTrace();
+                        exitMessage("ERROR: failed to parse JSON from web server");
+                    }
+                });
+            }
+        });
     }
 
-    private void addTableData() {
+    private void addTableData(JSONArray resArr, int size) {
         float tableFont = getResources().getDimension(R.dimen.tableFont);
         int rightPadding = (int) (getResources().getDimension(R.dimen.padding) / getResources().getDisplayMetrics().density);
+        int rightPaddingTable = (int) (getResources().getDimension(R.dimen.padding_body) / getResources().getDisplayMetrics().density);
 
         TableLayout table = findViewById(R.id.table);
         table.removeAllViews();
@@ -50,13 +111,21 @@ public class OrderCatalog extends AppCompatActivity {
 
         table.addView(header);
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 30; i++){
             TableRow data = new TableRow(this);
+            TextView dataISBN;
+            TextView dataTitle;
+            TextView dataOwner;
 
-            TextView dataISBN = setTextView("[ISBN]", tableFont, rightPadding);
-            TextView dataTitle = setTextView("[title]", tableFont, rightPadding);
-            TextView dataOwner = setTextView("[OwnerID]", tableFont, rightPadding);
-
+            if(!switchTable.isChecked()) {
+                dataISBN = setTextView("ooooooooooooo", tableFont, rightPaddingTable);
+                dataTitle = setTextView("tttttt ttttttt", tableFont, rightPaddingTable);
+                dataOwner = setTextView("oooooooooo", tableFont, rightPaddingTable);
+            } else {
+                dataISBN = setTextView("0000000000000", tableFont, rightPaddingTable);
+                dataTitle = setTextView("TTTTT TTTTTTT", tableFont, rightPaddingTable);
+                dataOwner = setTextView("0000000000", tableFont, rightPaddingTable);
+            }
             data.addView(dataISBN);
             data.addView(dataTitle);
             data.addView(dataOwner);
@@ -74,5 +143,20 @@ public class OrderCatalog extends AppCompatActivity {
 
             table.addView(data);
         }
+
+    }
+
+    private TextView setTextView(String text, float font, int paddingRight) {
+        TextView t = new TextView(this);
+        t.setText(text);
+        t.setTextSize(TypedValue.COMPLEX_UNIT_PX, font);
+        t.setPadding(0, 0, paddingRight, 0);
+        return t;
+    }
+
+    public void exitMessage(String msg) {
+        Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        exit.show();
+        finish();
     }
 }

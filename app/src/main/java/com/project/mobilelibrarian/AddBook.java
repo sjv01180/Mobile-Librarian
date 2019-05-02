@@ -74,14 +74,11 @@ public class AddBook extends AppCompatActivity {
                 } else {
                     try {
                         postRequest(postRegister);
-                        finish();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                Toast exit = Toast.makeText(getApplicationContext(),
-                        msg, Toast.LENGTH_SHORT);
-                exit.show();
+                exitMessage(msg);
                 break;
             default:
                 throw new RuntimeException("Unknown ID exception");
@@ -94,9 +91,7 @@ public class AddBook extends AppCompatActivity {
             res = scanningResult.getContents();
             bookISBN.setText(scanningResult.getContents());
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "No scan data or Invalid scan data received!", Toast.LENGTH_SHORT);
-            toast.show();
+            exitMessage("No scan data or Invalid scan data received!");
         }
     }
 
@@ -120,7 +115,7 @@ public class AddBook extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                postResult = "failed to connect to webserver";
+                exitMessage("failed to connect to webserver");
                 e.printStackTrace();
             }
 
@@ -145,16 +140,18 @@ public class AddBook extends AppCompatActivity {
                         }
                         postResult = msg;
 
-                        Toast exit = Toast.makeText(getApplicationContext(),
-                                postResult, Toast.LENGTH_SHORT);
-                        exit.show();
-                        Log.d("TAG",response.body().toString());
-
+                        exitMessage(msg);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 });
             }
         });
+    }
+
+    public void exitMessage(String msg) {
+        Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        exit.show();
+        finish();
     }
 }

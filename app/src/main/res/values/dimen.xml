@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tableFont">20sp</dimen>
+    <dimen name="tableFont">17sp</dimen>
     <dimen name="smallFont">10sp</dimen>
     <dimen name="padding">10dp</dimen>
-    <dimen name="padding_body">50dp</dimen>
+    <dimen name="padding_body">45dp</dimen>
 </resources>
