@@ -38,7 +38,7 @@ public class BookCatalog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_book_catalog);
         try {
             postRequest(postGetBooks);
         } catch (IOException e) {
@@ -79,7 +79,7 @@ public class BookCatalog extends AppCompatActivity {
         });
     }
 
-    private void addTableData(JSONArray resArray, int size) {
+    private void addTableData(JSONArray resArr, int size) {
         float tableFont = getResources().getDimension(R.dimen.tableFont);
         int rightPadding = (int) (getResources().getDimension(R.dimen.padding_body) / getResources().getDisplayMetrics().density);
         //int rightPaddingTable = (int) (getResources().getDimension(R.dimen.padding_body) / getResources().getDisplayMetrics().density);
@@ -91,7 +91,7 @@ public class BookCatalog extends AppCompatActivity {
 
         TextView labelISBN = setTextView("Book ISBN", tableFont, rightPadding);
         TextView labelTitle = setTextView("Title", tableFont, rightPadding);
-        TextView labelAuthor = setTextView("OwnerID", tableFont, rightPadding);
+        TextView labelAuthor = setTextView("Author", tableFont, rightPadding);
 
         header.addView(labelISBN);
         header.addView(labelTitle);
@@ -103,7 +103,7 @@ public class BookCatalog extends AppCompatActivity {
             TableRow data = new TableRow(this);
 
             try {
-                JSONObject resObj = resArray.getJSONObject(i);
+                JSONObject resObj = resArr.getJSONObject(i);
 
                 postGenre = resObj.getString("Genre");
 

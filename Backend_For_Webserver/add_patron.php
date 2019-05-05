@@ -1,7 +1,9 @@
 <?php
 require 'db_config.php';
 
-if((isset($_POST['id'])) && (isset($_POST['Fname'])) && (isset($_POST['Lname'])$
+$db_con = new mysqli($dbhost, $dbuname, $dbpass, $dbname);
+
+if((isset($_POST['id'])) && (isset($_POST['Fname'])) && (isset($_POST['Lname'])) && (isset($_POST['Ptype']))) {
                 $id = $_POST['id'];
                 $fName = $_POST['Fname'];
                 $lName = $_POST['Lname'];
@@ -12,7 +14,7 @@ if((isset($_POST['id'])) && (isset($_POST['Fname'])) && (isset($_POST['Lname'])$
                                 $insert = "INSERT INTO Student (Sid, Fname, Lname) VALUES ('$id', '$fName', '$lName')";
                                 break;
                         case "FACULTY":
-                                $insert = "INSERT INTO Faculty (Sid, Fname, Lname) VALUES ('$id', '$fName', '$lName')";
+                                $insert = "INSERT INTO Faculty (Fid, Fname, Lname) VALUES ('$id', '$fName', '$lName')";
                                 break;
                         default:
                                 $result->message = "UNKNOWN PATRON TYPE";

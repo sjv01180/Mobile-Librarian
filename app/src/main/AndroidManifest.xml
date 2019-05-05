@@ -14,19 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register"></activity>
-        <activity android:name=".MenuStock" />
-        <activity android:name=".BookDetails" />
-        <activity android:name=".BookCatalog" />
-        <activity android:name=".MenuCirc" />
-        <activity android:name=".RemoveBook" />
-        <activity android:name=".AddBook" />
-        <activity android:name=".AddPatron" />
-        <activity android:name=".OrderDetails" />
-        <activity android:name=".OrderCatalog" />
-        <activity android:name=".CheckinResult" />
-        <activity android:name=".CheckoutResult" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Register" android:screenOrientation="portrait"/>
+        <activity android:name=".MenuStock" android:screenOrientation="portrait"/>
+        <activity android:name=".BookDetails" android:screenOrientation="portrait"/>
+        <activity android:name=".BookCatalog" android:screenOrientation="portrait"/>
+        <activity android:name=".MenuCirc" android:screenOrientation="portrait"/>
+        <activity android:name=".RemoveBook" android:screenOrientation="portrait"/>
+        <activity android:name=".AddBook" android:screenOrientation="portrait"/>
+        <activity android:name=".AddPatron" android:screenOrientation="portrait"/>
+        <activity android:name=".OrderDetails" android:screenOrientation="portrait"/>
+        <activity android:name=".OrderCatalog" android:screenOrientation="portrait"/>
+        <activity android:name=".CheckinResult" android:screenOrientation="portrait"/>
+        <activity android:name=".CheckoutResult" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

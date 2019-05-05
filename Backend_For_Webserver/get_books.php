@@ -11,18 +11,11 @@ if ($db_con->connect_error) {
 $query = "SELECT * FROM Books";
 $sql = $db_con->query($query);
 
-$i = 0;
 $result = array();
 while($row = mysqli_fetch_assoc($sql))
 {
-
-        $book->isbn = $row["BookISBN"];
-        $book->title = $row["Title"];
-        $book->author = $row["Author"];
-        $book->genre = $row["Genre"];
         $book = $row;
         array_push($result, $book);
-
 }
 echo json_encode($result);
 

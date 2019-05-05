@@ -1090,6 +1090,7 @@ id book_isbn
 id book_title
 id bottom
 id buttonPanel
+id campus_id
 id cancel
 id center
 id centerCrop
@@ -1184,12 +1185,15 @@ id notification_main_column_container
 id order_history
 id outline
 id owner_id
+id owner_name
 id packed
 id parallax
 id parent
 id parentPanel
 id parent_matrix
 id password
+id patron_id
+id patron_name
 id percent
 id pin
 id progress_circular
@@ -1249,8 +1253,6 @@ id src_over
 id standard
 id start
 id stretch
-id student_id
-id student_name
 id submenuarrow
 id submit_area
 id tabMode

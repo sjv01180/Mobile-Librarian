@@ -91,7 +91,7 @@ public class AddBook extends AppCompatActivity {
             res = scanningResult.getContents();
             bookISBN.setText(scanningResult.getContents());
         } else {
-            exitMessage("No scan data or Invalid scan data received!");
+            exitMessage("No scan data or invalid scan data received!(addbook)");
         }
     }
 

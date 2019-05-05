@@ -94,55 +94,81 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Sam\.gradl
 	android:networkSecurityConfig
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:13:9-69
 activity#com.project.mobilelibrarian.Register
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:17:9-55
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:17:9-82
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:17:44-80
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:17:19-43
 activity#com.project.mobilelibrarian.MenuStock
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:9-47
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:9-83
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:45-81
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:18:19-44
 activity#com.project.mobilelibrarian.BookDetails
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:9-49
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:9-85
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:47-83
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:19:19-46
 activity#com.project.mobilelibrarian.BookCatalog
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:9-49
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:9-85
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:47-83
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:20:19-46
 activity#com.project.mobilelibrarian.MenuCirc
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:9-46
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:9-82
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:44-80
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:21:19-43
 activity#com.project.mobilelibrarian.RemoveBook
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:9-48
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:9-84
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:46-82
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:22:19-45
 activity#com.project.mobilelibrarian.AddBook
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:9-45
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:9-81
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:43-79
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:23:19-42
 activity#com.project.mobilelibrarian.AddPatron
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:9-47
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:9-83
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:45-81
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:24:19-44
 activity#com.project.mobilelibrarian.OrderDetails
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:25:9-50
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:25:9-86
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:25:48-84
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:25:19-47
 activity#com.project.mobilelibrarian.OrderCatalog
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:9-50
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:9-86
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:48-84
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:26:19-47
 activity#com.project.mobilelibrarian.CheckinResult
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:27:9-51
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:27:9-87
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:27:49-85
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:27:19-48
 activity#com.project.mobilelibrarian.CheckoutResult
-ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:28:9-52
+ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:28:9-88
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:28:50-86
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:28:19-49
 activity#com.project.mobilelibrarian.MainActivity
 ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:29:9-35:20
+	android:screenOrientation
+		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:29:48-84
 	android:name
 		ADDED from C:\Users\Sam\AndroidStudioProjects\MobileLibrarian\app\src\main\AndroidManifest.xml:29:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT

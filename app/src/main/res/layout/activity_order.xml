@@ -12,9 +12,7 @@
         android:id="@+id/table_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Order Type: "
-        android:textOff="Students"
-        android:textOn="Faculty"
+        android:text="Student Orders"
         android:textSize="30sp"/>
 
     <ScrollView
@@ -26,7 +24,6 @@
             android:layout_height="wrap_content">
             <TableLayout
                 android:id="@+id/table"
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding = "1sp">

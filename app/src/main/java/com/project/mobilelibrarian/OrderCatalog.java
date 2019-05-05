@@ -3,6 +3,7 @@ package com.project.mobilelibrarian;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -26,13 +27,22 @@ import okhttp3.Response;
 
 public class OrderCatalog extends AppCompatActivity {
     public static final String postGetChecks = "http://155.42.84.51/MobLib/get_checks.php";
-    public static final String postGetReserves = "http://155.42.84.51/MobLib/get_checks.php";
+    public static final String postGetReserves = "http://155.42.84.51/MobLib/get_reserves.php";
 
-    public static final String BOOK_ISBN = "com.project.mobilelibrarian.BOOK_ISBN";
-    public static final String BOOK_TITLE = "com.project.mobilelibrarian.BOOK_TITLE";
-    public static final String BOOK_OWNER = "com.project.mobilelibrarian.BOOK_OWNER";
+    public static final String EXTRA_ISBN = "com.project.mobilelibrarian.EXTRA_1";
+    public static final String EXTRA_TITLE = "com.project.mobilelibrarian.EXTRA_2";
+    public static final String EXTRA_AUTHOR = "com.project.mobilelibrarian.EXTRA_3";
+    public static final String EXTRA_GENRE = "com.project.mobilelibrarian.EXTRA_4";
+    public static final String EXTRA_OWNER_ID = "com.project.mobilelibrarian.EXTRA_5";
+    public static final String EXTRA_CO_DATE = "com.project.mobilelibrarian.EXTRA_6";
+    public static final String EXTRA_CI_DATE = "com.project.mobilelibrarian.EXTRA_7";
+    public static final String EXTRA_DUE_DATE = "com.project.mobilelibrarian.EXTRA_8";
+    public static final String EXTRA_FNAME = "com.project.mobilelibrarian.EXTRA_9";
+    public static final String EXTRA_LNAME = "com.project.mobilelibrarian.EXTRA_10";
+    public static final String EXTRA_ROLE = "com.project.mobilelibrarian.EXTRA_11";
 
     Switch switchTable;
+    public String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,26 +50,31 @@ public class OrderCatalog extends AppCompatActivity {
 
         switchTable = findViewById(R.id.table_switch);
         switchTable.setChecked(false);
-        addTableData(null, 0);
+        try {
+            role = "Student";
+            postGrabOrders(postGetChecks);
+        } catch (IOException e) {
+            exitMessage("ERROR: cannot access catalog at the moment");
+        }
 
         switchTable.setOnCheckedChangeListener((compoundButton, b) -> {
-            if(!switchTable.isChecked()) {
-                try {
-                    postRequest(postGetChecks);
-                } catch (IOException e) {
-                    exitMessage("ERROR: cannot access orders at the moment");
+            try {
+                if(!switchTable.isChecked()) {
+                        role = "Student";
+                        switchTable.setText("Student Orders");
+                        postGrabOrders(postGetChecks);
+                } else {
+                        role = "Faculty";
+                        switchTable.setText("Faculty Reserves");
+                        postGrabOrders(postGetReserves);
                 }
-            } else {
-                try {
-                    postRequest(postGetReserves);
-                } catch (IOException e) {
-                    exitMessage("ERROR: cannot access orders at the moment");
-                }
+            } catch (IOException e) {
+                exitMessage("ERROR: IOException");
             }
         });
     }
 
-    public void postRequest(String postUrl) throws IOException {
+    public void postGrabOrders(String postUrl) throws IOException {
         Request request = new Request.Builder()
                 .url(postUrl)
                 .build();
@@ -111,35 +126,65 @@ public class OrderCatalog extends AppCompatActivity {
 
         table.addView(header);
 
-        for(int i = 0; i < 30; i++){
+        for(int i = 0; i < size; i++) {
             TableRow data = new TableRow(this);
-            TextView dataISBN;
-            TextView dataTitle;
-            TextView dataOwner;
+            try {
+                TextView dataOwner;
 
-            if(!switchTable.isChecked()) {
-                dataISBN = setTextView("ooooooooooooo", tableFont, rightPaddingTable);
-                dataTitle = setTextView("tttttt ttttttt", tableFont, rightPaddingTable);
-                dataOwner = setTextView("oooooooooo", tableFont, rightPaddingTable);
-            } else {
-                dataISBN = setTextView("0000000000000", tableFont, rightPaddingTable);
-                dataTitle = setTextView("TTTTT TTTTTTT", tableFont, rightPaddingTable);
-                dataOwner = setTextView("0000000000", tableFont, rightPaddingTable);
-            }
-            data.addView(dataISBN);
-            data.addView(dataTitle);
-            data.addView(dataOwner);
+                JSONObject resObj = resArr.getJSONObject(i);
+                Log.d("TAG", resObj.toString());
 
-            data.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent details = new Intent(OrderCatalog.this, OrderDetails.class);
-                    details.putExtra(BOOK_ISBN, dataISBN.getText().toString());
-                    details.putExtra(BOOK_TITLE, dataTitle.getText().toString());
-                    details.putExtra(BOOK_OWNER, dataOwner.getText().toString());
-                    startActivity(details);
+                TextView dataISBN = setTextView(resObj.getString("BookISBN"), tableFont, rightPaddingTable);
+                TextView dataTitle = setTextView(resObj.getString("Title"), tableFont, rightPaddingTable);
+
+                String id;
+                if(resObj.has("Sid")) {
+                    id = resObj.getString("Sid");
+                } else if(resObj.has("Fid")) {
+                    id = resObj.getString("Fid");
+                } else {
+                    id = null;
+                    exitMessage("ERROR: id doesn't exist in JSON object");
                 }
-            });
+                dataOwner = setTextView(id, tableFont, rightPaddingTable);
+
+                data.addView(dataISBN);
+                data.addView(dataTitle);
+
+
+                data.addView(dataOwner);
+
+                String coDate = resObj.getString("CO_Date");
+                String ciDate = resObj.getString("CI_Date");
+                String dueDate = resObj.getString("Due_Date");
+                String author = resObj.getString("Author");
+                String genre = resObj.getString("Genre");
+                String fName = resObj.getString("Fname");
+                String lName = resObj.getString("Lname");
+
+                data.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent details = new Intent(OrderCatalog.this, OrderDetails.class);
+                        details.putExtra(EXTRA_ISBN, dataISBN.getText().toString());
+                        details.putExtra(EXTRA_TITLE, dataTitle.getText().toString());
+                        details.putExtra(EXTRA_OWNER_ID, dataOwner.getText().toString());
+                        details.putExtra(EXTRA_AUTHOR, author);
+                        details.putExtra(EXTRA_GENRE, genre);
+                        details.putExtra(EXTRA_CO_DATE, coDate);
+                        details.putExtra(EXTRA_CI_DATE, ciDate);
+                        details.putExtra(EXTRA_DUE_DATE, dueDate);
+                        details.putExtra(EXTRA_FNAME, fName);
+                        details.putExtra(EXTRA_LNAME, lName);
+                        details.putExtra(EXTRA_ROLE, role);
+                        startActivity(details);
+                    }
+                });
+
+            } catch (JSONException j) {
+                j.printStackTrace();
+                exitMessage("ERROR: failed to parse JSON from web server");
+            }
 
             table.addView(data);
         }

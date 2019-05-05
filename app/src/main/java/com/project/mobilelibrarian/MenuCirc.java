@@ -36,11 +36,11 @@ public class MenuCirc extends AppCompatActivity {
         switch(v.getId()) {
             case (R.id.check_out):
                 scanType = "ITF";
-                activity = new Intent(MenuCirc.this, AddBook.class);
+                activity = new Intent(MenuCirc.this, CheckoutResult.class);
                 break;
             case (R.id.check_in):
                 scanType = "CODABAR";
-                activity = new Intent(MenuCirc.this, RemoveBook.class);
+                activity = new Intent(MenuCirc.this, CheckinResult.class);
                 break;
             default:
                 throw new RuntimeException("Unknown ID");
@@ -67,14 +67,14 @@ public class MenuCirc extends AppCompatActivity {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null && resultCode == RESULT_OK) {
             if(scanningResult.getFormatName().equals(scanType)) {
+                Log.d("SCAN RESULT", scanningResult.getFormatName());
                 activity.putExtra(SCAN_RESULT, scanningResult.getContents());
                 startActivity(activity);
-                Log.d("SCAN RESULT", "scan successful");
             } else {
                 exitMessage("Invalid scan data recieved! Try again", false);
             }
         } else {
-            exitMessage("No scan data scan data received! Try again", false);
+            exitMessage("No scan data or invalid scan data received! Try again", false);
         }
     }
 

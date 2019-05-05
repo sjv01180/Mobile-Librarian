@@ -20,5 +20,6 @@ if((isset($_POST['name'])) && (isset($_POST['pass'])) && (isset($_POST['role']))
         $result->message = "POST failed";
         echo json_encode($result);
 }
+
 $db_con->close();
 ?>
