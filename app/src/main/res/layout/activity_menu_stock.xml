@@ -21,7 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_gravity="center"
         android:paddingBottom="10sp"
-        android:text="Add New Book" />
+        android:text="Add New Book (scan book)" />
 
     <Button
         android:id="@+id/remove_book"

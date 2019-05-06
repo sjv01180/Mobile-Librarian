@@ -8,25 +8,52 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/splashscreen"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register" android:screenOrientation="portrait"/>
-        <activity android:name=".MenuStock" android:screenOrientation="portrait"/>
-        <activity android:name=".BookDetails" android:screenOrientation="portrait"/>
-        <activity android:name=".BookCatalog" android:screenOrientation="portrait"/>
-        <activity android:name=".MenuCirc" android:screenOrientation="portrait"/>
-        <activity android:name=".RemoveBook" android:screenOrientation="portrait"/>
-        <activity android:name=".AddBook" android:screenOrientation="portrait"/>
-        <activity android:name=".AddPatron" android:screenOrientation="portrait"/>
-        <activity android:name=".OrderDetails" android:screenOrientation="portrait"/>
-        <activity android:name=".OrderCatalog" android:screenOrientation="portrait"/>
-        <activity android:name=".CheckinResult" android:screenOrientation="portrait"/>
-        <activity android:name=".CheckoutResult" android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+        <activity android:name=".MenuAdmin" />
+        <activity
+            android:name=".Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MenuStock"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BookDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BookCatalog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MenuCirc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RemoveBook"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddBook"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddPatron"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderCatalog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CheckinResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CheckoutResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

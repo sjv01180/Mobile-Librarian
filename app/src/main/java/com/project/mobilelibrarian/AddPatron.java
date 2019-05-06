@@ -38,7 +38,10 @@ public class AddPatron extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patron);
-        id = findViewById(R.id.id);
+        Intent fromMenuAdmin = getIntent();
+
+        id = findViewById(R.id.patron_id);
+        id.setText(fromMenuAdmin.getStringExtra(MenuAdmin.SCAN_RESULT));
         fname = findViewById(R.id.f_name);
         lname = findViewById(R.id.l_name);
     }
@@ -64,32 +67,26 @@ public class AddPatron extends AppCompatActivity {
                 finish();
                 break;
             case (R.id.add_user):
-                String msg = "Successfully added a patron: " + fname.getText().toString() + " " + lname.getText().toString();
-
-                if(fname.getText().toString().length() == 0){
+                String msg;
+                if(fname.getText().toString().length() == 0) {
                     msg = "ERROR: first name is not set";
-                }
-
-                else if(lname.getText().toString().length() == 0){
+                    exitMessage(msg, true);
+                } else if(lname.getText().toString().length() == 0) {
                     msg = "ERROR: last name is not set";
-                }
-
-                else if(patronType.length() == 0){
+                    exitMessage(msg, true);
+                } else if(patronType.length() == 0){
                     msg = "ERROR: role type is not set";
-                }
-
-                else {
+                    exitMessage(msg, true);
+                } else {
                     try {
                         postRequest(postUrl);
+                        msg = postResult;
+                        exitMessage(msg, false);
                     } catch (IOException e) {
                         e.printStackTrace();
+                        exitMessage("ERROR: IOException", false);
                     }
-                    finish();
                 }
-                msg = postResult;
-                Toast exit = Toast.makeText(getApplicationContext(),
-                        msg, Toast.LENGTH_SHORT);
-                exit.show();
                 break;
             default:
                 throw new RuntimeException("Unknown ID exception");
@@ -99,34 +96,27 @@ public class AddPatron extends AppCompatActivity {
     public void scan(View v) {
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
         scanIntegrator.setOrientationLocked(false);
+        scanIntegrator.setPrompt("To begin, Scan a patron's student ID or faculty ID");
         scanIntegrator.initiateScan();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null ) {
-            if(scanningResult.getFormatName().equals("ITF")) {
-                String schoolID = scanningResult.getContents();
-                id.setText(schoolID);
-            }
-
+        if (scanningResult != null && resultCode == RESULT_OK && scanningResult.getFormatName().equals("ITF")) {
+            String schoolID = scanningResult.getContents();
+            id.setText(schoolID);
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "No scan data received! ScanType = " + scanningResult.getFormatName(), Toast.LENGTH_SHORT);
-            toast.show();
+            exitMessage("No scan data or invalid scan data received!", false);
         }
     }
 
     public void postRequest(String postUrl) throws IOException {
-
         RequestBody formBody = new FormBody.Builder()
                 .add("id", id.getText().toString())
                 .add("Fname", fname.getText().toString())
                 .add("Lname", lname.getText().toString())
                 .add("Ptype", patronType)
                 .build();
-
-        //RequestBody body = RequestBody.create(JSON, postBody);
 
         Request request = new Request.Builder()
                 .url(postUrl)
@@ -138,8 +128,8 @@ public class AddPatron extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                postResult = "failed to connect to webserver";
                 e.printStackTrace();
+                exitMessage("failed to connect to webserver", true);
             }
 
             @Override
@@ -153,10 +143,10 @@ public class AddPatron extends AppCompatActivity {
                         String result = json.getString("message");
                         switch (result) {
                             case ("UNKNOWN PATRON TYPE"):
-                                msg = "insertion failed: unknown patron type";
+                                msg = "ERROR: unknown patron type";
                                 break;
                             case ("Insertion failed"):
-                                msg = "insertion failed: sql statement error (user already inserted)";
+                                msg = "ERROR: patron already listed in patron list";
                                 break;
                             case ("Insertion successful"):
                                 break;
@@ -166,22 +156,20 @@ public class AddPatron extends AppCompatActivity {
                         }
 
                         postResult = msg;
-                        Toast exit = Toast.makeText(getApplicationContext(),
-                                postResult, Toast.LENGTH_SHORT);
-                        exit.show();
-                        Log.d("TAG",response.body().toString());
+                        exitMessage(msg, true);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        exitMessage("ERROR: JSONException", true);
                     }
                 });
             }
         });
     }
 
-    public void exitMessage(String msg) {
+    public void exitMessage(String msg, Boolean isFinished) {
         Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         exit.show();
-        finish();
+        if(isFinished) finish();
     }
 }

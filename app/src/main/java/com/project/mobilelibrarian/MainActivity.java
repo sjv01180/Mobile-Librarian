@@ -121,6 +121,10 @@ public class MainActivity extends AppCompatActivity {
                                 activity = new Intent(MainActivity.this, MenuStock.class);
                                 startActivity(activity);
                                 break;
+                            case("ADMIN"):
+                                activity = new Intent(MainActivity.this, MenuAdmin.class);
+                                startActivity(activity);
+                                break;
                             default:
                                 postResult = "ERROR: incorrect user or password";
                                 break;

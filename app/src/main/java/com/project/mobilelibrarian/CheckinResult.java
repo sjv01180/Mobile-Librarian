@@ -47,6 +47,7 @@ public class CheckinResult extends AppCompatActivity {
     TextView coDate;
     TextView ciDate;
     TextView dueDate;
+    TextView lateFee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,19 +100,21 @@ public class CheckinResult extends AppCompatActivity {
                     try {
                         JSONObject json = new JSONObject(myResponse);
                         String result = json.getString("message");
-                        Log.d("TAG", "isbn: " + isbn +", 1s: " + result);
                         switch(result) {
                             case ("STUDENT"):
+                                Log.d("TAG", "isbn: " + isbn +", 1s: " + result);
                                 postOrder(postUpdateChecks);
                                 break;
                             case ("FACULTY"):
+                                Log.d("TAG", "isbn: " + isbn +", 1f: " + result);
                                 postOrder(postUpdateReserves);
                                 break;
                             case("student update successful"):
-                                Log.d("TAG", "1: " + json.toString());
+                                Log.d("TAG", "isbn: " + isbn +", 1su: " + result);
                                 postGrabOrder(postGetCheck);
                                 break;
                             case("faculty update successful"):
+                                Log.d("TAG", "isbn: " + isbn +", 1fu: " + result);
                                 postGrabOrder(postGetReserve);
                                 break;
                             default:

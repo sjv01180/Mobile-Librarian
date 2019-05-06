@@ -78,7 +78,7 @@ public class AddBook extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                exitMessage(msg);
+                exitMessage(msg, true);
                 break;
             default:
                 throw new RuntimeException("Unknown ID exception");
@@ -91,7 +91,7 @@ public class AddBook extends AppCompatActivity {
             res = scanningResult.getContents();
             bookISBN.setText(scanningResult.getContents());
         } else {
-            exitMessage("No scan data or invalid scan data received!(addbook)");
+            exitMessage("No scan data or invalid scan data received!(addbook)", true);
         }
     }
 
@@ -115,7 +115,7 @@ public class AddBook extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                exitMessage("failed to connect to webserver");
+                exitMessage("failed to connect to webserver", true);
                 e.printStackTrace();
             }
 
@@ -140,7 +140,7 @@ public class AddBook extends AppCompatActivity {
                         }
                         postResult = msg;
 
-                        exitMessage(msg);
+                        exitMessage(msg, true);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -149,9 +149,9 @@ public class AddBook extends AppCompatActivity {
         });
     }
 
-    public void exitMessage(String msg) {
+    public void exitMessage(String msg, Boolean isFinished) {
         Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         exit.show();
-        finish();
+        if(isFinished) finish();
     }
 }

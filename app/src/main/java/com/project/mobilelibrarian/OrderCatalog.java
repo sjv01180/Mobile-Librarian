@@ -61,7 +61,7 @@ public class OrderCatalog extends AppCompatActivity {
             try {
                 if(!switchTable.isChecked()) {
                         role = "Student";
-                        switchTable.setText("Student Orders");
+                        switchTable.setText("Student Checkouts");
                         postGrabOrders(postGetChecks);
                 } else {
                         role = "Faculty";
@@ -132,7 +132,6 @@ public class OrderCatalog extends AppCompatActivity {
                 TextView dataOwner;
 
                 JSONObject resObj = resArr.getJSONObject(i);
-                Log.d("TAG", resObj.toString());
 
                 TextView dataISBN = setTextView(resObj.getString("BookISBN"), tableFont, rightPaddingTable);
                 TextView dataTitle = setTextView(resObj.getString("Title"), tableFont, rightPaddingTable);

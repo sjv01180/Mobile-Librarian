@@ -128,7 +128,7 @@
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/insert"
+            android:id="@+id/remove"
             android:onClick="returnToMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

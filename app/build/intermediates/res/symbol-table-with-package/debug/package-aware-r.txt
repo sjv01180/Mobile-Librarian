@@ -1073,6 +1073,7 @@ id actions
 id activity_chooser_view_content
 id add
 id add_book
+id add_patron
 id add_user
 id alertTitle
 id all
@@ -1149,7 +1150,6 @@ id home
 id homeAsUp
 id icon
 id icon_group
-id id
 id ifRoom
 id image
 id image_view
@@ -1205,6 +1205,7 @@ id radio_faculty
 id radio_stock
 id radio_student
 id register
+id remove
 id remove_book
 id retype_password
 id right
@@ -1360,6 +1361,7 @@ layout activity_book_details
 layout activity_checkin
 layout activity_checkout
 layout activity_main
+layout activity_menu_admin
 layout activity_menu_circ
 layout activity_menu_stock
 layout activity_order

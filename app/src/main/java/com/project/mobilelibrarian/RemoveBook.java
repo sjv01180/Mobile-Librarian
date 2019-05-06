@@ -66,10 +66,9 @@ public class RemoveBook extends AppCompatActivity {
             case (R.id.cancel):
                 finish();
                 break;
-            case (R.id.insert):
+            case (R.id.remove):
                 try {
                     postRemove(postBookRemove);
-                    exitMessage("Successfully deleted book from catalog");
                 } catch(IOException e) {
                     exitMessage("Failed to remove book from catalog");
                 }
@@ -198,8 +197,10 @@ public class RemoveBook extends AppCompatActivity {
                         Log.d("TAG", result);
                         switch(result) {
                             case ("Removal successful"):
+                                exitMessage("Successfully removed order from database");
                                 break;
                             case("Removal failed"):
+                                exitMessage(result);
                                 break;
                             default:
                                 exitMessage("UNKNOWN SQL ERROR");
