@@ -26,8 +26,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class AddPatron extends AppCompatActivity {
-    public final String postUrl= "http://155.42.84.51/MobLib/add_patron.php";
-    public String postResult = "";
+    public String postPatron;
+    public String postResult;
 
     String patronType = "";
     TextView id;
@@ -40,6 +40,7 @@ public class AddPatron extends AppCompatActivity {
         setContentView(R.layout.activity_add_patron);
         Intent fromMenuAdmin = getIntent();
 
+        postPatron = getString(R.string.url) + "/MobLib/add_patron.php";
         id = findViewById(R.id.patron_id);
         id.setText(fromMenuAdmin.getStringExtra(MenuAdmin.SCAN_RESULT));
         fname = findViewById(R.id.f_name);
@@ -79,7 +80,7 @@ public class AddPatron extends AppCompatActivity {
                     exitMessage(msg, true);
                 } else {
                     try {
-                        postRequest(postUrl);
+                        postAddPatron(postPatron);
                         msg = postResult;
                         exitMessage(msg, false);
                     } catch (IOException e) {
@@ -110,7 +111,7 @@ public class AddPatron extends AppCompatActivity {
         }
     }
 
-    public void postRequest(String postUrl) throws IOException {
+    public void postAddPatron(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("id", id.getText().toString())
                 .add("Fname", fname.getText().toString())

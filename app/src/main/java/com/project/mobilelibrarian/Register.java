@@ -25,17 +25,18 @@ import okhttp3.Response;
 
 public class Register extends AppCompatActivity {
 
-    public final String postRegister = "http://155.42.84.51/MobLib/add_user.php";
-    String postResult = "";
+    public String postRegister;
+    String postResult;
 
     EditText user;
     EditText pass;
     EditText retypePass;
-    String role = "";
+    String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        postRegister = getString(R.string.url) + "/MobLib/add_user.php";
         user = findViewById(R.id.username);
         pass = findViewById(R.id.password);
         retypePass = findViewById(R.id.retype_password);

@@ -1,6 +1,7 @@
 package com.project.mobilelibrarian;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +26,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    public final String postLogin= "http://155.42.84.51/MobLib/user_login.php";
+    public String postLogin;
     String postResult = "";
 
     public static Intent activity;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         user = findViewById(R.id.username);
         pass = findViewById(R.id.password);
+        postLogin = getString(R.string.url) + "/MobLib/user_login.php";
     }
 
     public void clearInput(View v) {
@@ -53,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case (R.id.login):
                 String msg = "";
-                Toast exit;
                 if(user.getText().toString().length() == 0) {
                     msg = "Error: username field is empty";
                 }
@@ -63,16 +64,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     try {
-                        postRequest(postLogin);
+                        postLogin(postLogin);
                         msg = postResult;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                if(activity == null) {
-                    exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-                    exit.show();
-                }
+                exitMessage(msg,false);
                 break;
             default:
                 throw new RuntimeException("Unknown ID");
@@ -80,13 +78,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void postRequest(String postUrl) throws IOException {
+    public void postLogin(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("name", user.getText().toString())
                 .add("pass", pass.getText().toString())
                 .build();
-
-        //RequestBody body = RequestBody.create(JSON, postBody);
 
         Request request = new Request.Builder()
                 .url(postUrl)
@@ -129,11 +125,7 @@ public class MainActivity extends AppCompatActivity {
                                 postResult = "ERROR: incorrect user or password";
                                 break;
                         }
-                        Toast exitPost = Toast.makeText(getApplicationContext(),
-                                postResult, Toast.LENGTH_SHORT);
-                        exitPost.show();
-
-                        Log.d("TAG", "result: " + postResult);
+                        exitMessage(postResult, false);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -141,5 +133,11 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public void exitMessage(String msg, Boolean isFinished) {
+        Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        exit.show();
+        if(isFinished) finish();
     }
 }

@@ -1,11 +1,11 @@
 package com.project.mobilelibrarian;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +27,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CheckinResult extends AppCompatActivity {
-    public static final String postGetCheck = "http://155.42.84.51/MobLib/get_check.php";
-    public static final String postGetReserve = "http://155.42.84.51/MobLib/get_reserve.php";
-    public static final String postUpdateChecks = "http://155.42.84.51/MobLib/update_checks.php";
-    public static final String postUpdateReserves = "http://155.42.84.51/MobLib/update_reserves.php";
-    public static final String postFindBook = "http://155.42.84.51/MobLib/find_book.php";
-
+    public String postGetCheck;
+    public String postGetReserve;
+    public String postUpdateChecks;
+    public String postUpdateReserves;
+    public String postFindBook;
     String isbn;
     String patronRole;
 
@@ -47,12 +46,17 @@ public class CheckinResult extends AppCompatActivity {
     TextView coDate;
     TextView ciDate;
     TextView dueDate;
-    TextView lateFee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
+
+        postGetCheck = getString(R.string.url) + "/MobLib/get_check.php";
+        postGetReserve = getString(R.string.url) + "/MobLib/get_reserve.php";
+        postUpdateChecks = getString(R.string.url) + "/MobLib/update_checks.php";
+        postUpdateReserves = getString(R.string.url) + "/MobLib/update_reserves.php";
+        postFindBook = getString(R.string.url) + "/MobLib/find_book.php";
 
         try {
             Intent fromMain = getIntent();
@@ -102,19 +106,15 @@ public class CheckinResult extends AppCompatActivity {
                         String result = json.getString("message");
                         switch(result) {
                             case ("STUDENT"):
-                                Log.d("TAG", "isbn: " + isbn +", 1s: " + result);
                                 postOrder(postUpdateChecks);
                                 break;
                             case ("FACULTY"):
-                                Log.d("TAG", "isbn: " + isbn +", 1f: " + result);
                                 postOrder(postUpdateReserves);
                                 break;
                             case("student update successful"):
-                                Log.d("TAG", "isbn: " + isbn +", 1su: " + result);
                                 postGrabOrder(postGetCheck);
                                 break;
                             case("faculty update successful"):
-                                Log.d("TAG", "isbn: " + isbn +", 1fu: " + result);
                                 postGrabOrder(postGetReserve);
                                 break;
                             default:
@@ -158,9 +158,6 @@ public class CheckinResult extends AppCompatActivity {
                 CheckinResult.this.runOnUiThread(() -> {
                     try {
                         JSONObject jsonObj = new JSONObject(myResponse);
-                        //JSONObject jsonObj = jsonArr.getJSONObject(0);
-                        Log.d("TAG", "2: " + jsonObj.toString());
-
 
                         patronID = findViewById(R.id.patron_id);
                         bookISBN = findViewById(R.id.book_isbn);

@@ -3,7 +3,6 @@ package com.project.mobilelibrarian;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -26,8 +25,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class OrderCatalog extends AppCompatActivity {
-    public static final String postGetChecks = "http://155.42.84.51/MobLib/get_checks.php";
-    public static final String postGetReserves = "http://155.42.84.51/MobLib/get_reserves.php";
+    public String postGetChecks;
+    public String postGetReserves;
 
     public static final String EXTRA_ISBN = "com.project.mobilelibrarian.EXTRA_1";
     public static final String EXTRA_TITLE = "com.project.mobilelibrarian.EXTRA_2";
@@ -48,8 +47,11 @@ public class OrderCatalog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
+        postGetChecks = getString(R.string.url) + "/MobLib/get_checks.php";
+        postGetReserves = getString(R.string.url) + "/MobLib/get_reserves.php";
         switchTable = findViewById(R.id.table_switch);
         switchTable.setChecked(false);
+
         try {
             role = "Student";
             postGrabOrders(postGetChecks);

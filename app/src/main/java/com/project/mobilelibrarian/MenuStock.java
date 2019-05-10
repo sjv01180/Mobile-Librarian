@@ -12,7 +12,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class MenuStock extends AppCompatActivity {
-
     public static final String SCAN_RESULT = "com.project.mobilelibrarian.MESSAGE";
     public static Intent activity;
 
@@ -55,7 +54,6 @@ public class MenuStock extends AppCompatActivity {
         if (scanningResult != null && resultCode == RESULT_OK && scanningResult.getFormatName().equals("CODABAR")) {
             activity.putExtra(SCAN_RESULT, scanningResult.getContents());
             startActivity(activity);
-            Log.d("SCAN RESULT", "scan successful");
         } else {
             exitMessage("No scan data or Improper scan data received! Try Again", false);
         }

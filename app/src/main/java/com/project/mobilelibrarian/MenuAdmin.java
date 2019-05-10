@@ -12,10 +12,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class MenuAdmin extends AppCompatActivity {
-
     public static final String SCAN_RESULT = "com.project.mobilelibrarian.MESSAGE";
     public static Intent activity;
-    public String scanType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

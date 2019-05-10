@@ -24,7 +24,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class BookDetails extends AppCompatActivity {
-    public static final String postGetLastDate = "http://155.42.84.51/MobLib/get_last_checkout.php";
+    public String postGetLastDate;
 
     TextView bookISBN;
     TextView title;
@@ -37,6 +37,7 @@ public class BookDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
 
+        postGetLastDate = getString(R.string.url) + "/MobLib/get_last_checkout.php";
         Intent bookRow = getIntent();
         bookISBN = findViewById(R.id.book_isbn);
         bookISBN.setText(bookRow.getStringExtra(BookCatalog.BOOK_ISBN));
@@ -56,7 +57,6 @@ public class BookDetails extends AppCompatActivity {
             e.printStackTrace();
             exitMessage("ERROR: IOException");
         }
-
 
     }
 

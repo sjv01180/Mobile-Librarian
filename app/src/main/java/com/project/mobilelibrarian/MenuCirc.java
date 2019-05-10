@@ -12,7 +12,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class MenuCirc extends AppCompatActivity {
-
     public static final String SCAN_RESULT = "com.project.mobilelibrarian.MESSAGE";
     public static Intent activity;
     public String scanType;
@@ -67,7 +66,6 @@ public class MenuCirc extends AppCompatActivity {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null && resultCode == RESULT_OK) {
             if(scanningResult.getFormatName().equals(scanType)) {
-                Log.d("SCAN RESULT", scanningResult.getFormatName());
                 activity.putExtra(SCAN_RESULT, scanningResult.getContents());
                 startActivity(activity);
             } else {

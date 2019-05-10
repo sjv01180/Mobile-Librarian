@@ -1,4 +1,8 @@
 <resources>
+    //SERVER URL#############################################
+    <string name="url">http://155.42.84.51</string>
+
+    //Main Activity******************************************
     <string name="app_name">MobileLibrarian</string>
     <string name="title_activity_add_user">AddUser</string>
     <string name="title_activity_book_details">BookDetails</string>

@@ -26,10 +26,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class AddBook extends AppCompatActivity {
+    public String postRegister;
 
-    public final String postRegister= "http://155.42.84.51/MobLib/add_book.php";
+
     public String postResult;
-
     TextView bookISBN;
     EditText bookTitle;
     EditText bookAuthor;
@@ -40,6 +40,7 @@ public class AddBook extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
+        postRegister = getResources().getString(R.string.url) + "/MobLib/add_book.php";
         bookTitle = findViewById(R.id.book_title);
         bookAuthor = findViewById(R.id.book_author);
         bookGenre = findViewById(R.id.book_genre);
@@ -73,7 +74,7 @@ public class AddBook extends AppCompatActivity {
                     msg = "ERROR: genre is not set";
                 } else {
                     try {
-                        postRequest(postRegister);
+                        postAddBook(postRegister);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -95,7 +96,7 @@ public class AddBook extends AppCompatActivity {
         }
     }
 
-    public void postRequest(String postUrl) throws IOException {
+    public void postAddBook(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("isbn", bookISBN.getText().toString())
                 .add("title", bookTitle.getText().toString())

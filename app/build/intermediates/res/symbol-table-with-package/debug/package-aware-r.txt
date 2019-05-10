@@ -1161,7 +1161,6 @@ id item_touch_helper_previous_elevation
 id l_name
 id labeled
 id largeLabel
-id late_fee
 id left
 id line1
 id line3
@@ -1486,6 +1485,7 @@ string title
 string title_activity_add_user
 string title_activity_book_details
 string title_activity_register
+string url
 string zxing_app_name
 string zxing_button_ok
 string zxing_msg_camera_framework_bug

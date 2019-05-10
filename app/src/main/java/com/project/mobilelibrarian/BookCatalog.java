@@ -26,27 +26,29 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class BookCatalog extends AppCompatActivity {
-    public static final String postGetBooks = "http://155.42.84.51/MobLib/get_books.php";
+    public String postGetBooks;
 
     public static final String BOOK_ISBN = "com.project.mobilelibrarian.BookCatalog.BOOK_ISBN";
     public static final String BOOK_TITLE = "com.project.mobilelibrarian.BookCatalog.BOOK_TITLE";
     public static final String BOOK_AUTHOR = "com.project.mobilelibrarian.BookCatalog.BOOK_AUTHOR";
     public static final String BOOK_GENRE = "com.project.mobilelibrarian.BookCatalog.BOOK_GENRE";
 
-    String postGenre = "";
+    String postGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_catalog);
+        postGetBooks = getString(R.string.url) + "/MobLib/get_books.php";
+
         try {
-            postRequest(postGetBooks);
+            postQueryBook(postGetBooks);
         } catch (IOException e) {
             exitMessage("ERROR: cannot access catalog at the moment");
         }
     }
 
-    public void postRequest(String postUrl) throws IOException {
+    public void postQueryBook(String postUrl) throws IOException {
         Request request = new Request.Builder()
                 .url(postUrl)
                 .build();

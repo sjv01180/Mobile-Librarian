@@ -3,7 +3,6 @@ package com.project.mobilelibrarian;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +30,12 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CheckoutResult extends AppCompatActivity {
-    public static final String postFindID = "http://155.42.84.51/MobLib/find_id.php";
-    public static final String postFindBook = "http://155.42.84.51/MobLib/get_book.php";
-    public static final String postCheck = "http://155.42.84.51/MobLib/add_checks.php";
-    public static final String postReserves= "http://155.42.84.51/MobLib/add_reserves.php";
-
+    public String postFindID;
+    public String postFindBook;
+    public String postCanCheck;
+    public String postCanReserve;
+    public String postCheck;
+    public String postReserve;
 
     DateTimeFormatter dateFormatter = DateTimeFormat.forPattern("MM/dd/yyyy");
     DateTime co_date = new DateTime();
@@ -52,8 +52,8 @@ public class CheckoutResult extends AppCompatActivity {
     TextView checkoutDate;
     TextView dueDate;
 
-    String resID = "";
-    String resISBN = "";
+    String resID;
+    String resISBN;
     String postTitle;
     String postAuthor;
     String postGenre;
@@ -66,12 +66,20 @@ public class CheckoutResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+
+        postFindID = getString(R.string.url) + "/MobLib/find_id.php";
+        postFindBook = getString(R.string.url) + "/MobLib/get_book.php";
+        postCheck = getString(R.string.url) + "/MobLib/add_checks.php";
+        postReserve = getString(R.string.url) + "/MobLib/add_reserves.php";
+        postCanCheck = getString(R.string.url) + "/MobLib/can_check.php";
+        postCanReserve = getString(R.string.url) + "/MobLib/can_reserve.php";
         Intent fromMain = getIntent();
+
         try {
             resID = fromMain.getStringExtra(MenuCirc.SCAN_RESULT);
             campusID = findViewById(R.id.campus_id);
             campusID.setText(resID);
-            postID(postFindID);
+            postQueryID(postFindID);
         } catch (IOException e) {
             exitMessage("ERROR: IO EXCEPTION", true);
         }
@@ -100,10 +108,10 @@ public class CheckoutResult extends AppCompatActivity {
                     try {
                         switch (idType) {
                             case ("STUDENT"):
-                                postInsert(postCheck);
+                                postDetermineEligibility(postCanCheck);
                                 break;
                             case ("FACULTY"):
-                                postInsert(postReserves);
+                                postDetermineEligibility(postCanReserve);
                                 break;
                             default:
                                 exitMessage("ERROR: UNIDENTIFIED ID TYPE FOUND", true);
@@ -154,7 +162,7 @@ public class CheckoutResult extends AppCompatActivity {
                 case "ITF":
                     try {
                         resID = scanningResult.getContents();
-                        postID(postFindID);
+                        postQueryID(postFindID);
                     } catch (IOException e) {
                         exitMessage("ERROR: IO EXCEPTION", true);
                     }
@@ -162,7 +170,7 @@ public class CheckoutResult extends AppCompatActivity {
                 case "CODABAR":
                     try {
                         resISBN = scanningResult.getContents();
-                        postFindBook(postFindBook);
+                        postQueryBook(postFindBook);
                     } catch (IOException e) {
                         exitMessage("ERROR: IO EXCEPTION", true);
                     }
@@ -176,7 +184,7 @@ public class CheckoutResult extends AppCompatActivity {
         }
     }
 
-    public void postID(String postUrl) throws IOException {
+    public void postQueryID(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("id", resID)
                 .build();
@@ -210,7 +218,6 @@ public class CheckoutResult extends AppCompatActivity {
                             setDeadlineDate(idType);
                             campusID = findViewById(R.id.campus_id);
                             campusID.setText(resID);
-                            Log.d("TAG", idType);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -220,7 +227,7 @@ public class CheckoutResult extends AppCompatActivity {
         });
     }
 
-    public void postFindBook(String postUrl) throws IOException {
+    public void postQueryBook(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("isbn", resISBN)
                 .build();
@@ -288,7 +295,67 @@ public class CheckoutResult extends AppCompatActivity {
         });
     }
 
-    public void postInsert(String postUrl) throws IOException {
+    public void postDetermineEligibility(String postUrl) throws IOException {
+        RequestBody formBody = new FormBody.Builder()
+                .add("id", resID)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(postUrl)
+                .post(formBody)
+                .build();
+
+        OkHttpClient client = new OkHttpClient();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                exitMessage("failed to connect to webserver", true);
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String myResponse = response.body().string();
+
+                CheckoutResult.this.runOnUiThread(() -> {
+                    try {
+                        JSONObject json = new JSONObject(myResponse);
+                        String result = json.getString("message");
+                        switch(result) {
+                            case ("no"):
+                                exitMessage("Patron has not checked in their orders.",true);
+                                break;
+                            case ("yes"):
+                                switch (idType) {
+                                    case ("STUDENT"):
+                                        postInsertOrder(postCheck);
+                                        break;
+                                    case ("FACULTY"):
+                                        postInsertOrder(postReserve);
+                                        break;
+                                    default:
+                                        exitMessage("ERROR: UNIDENTIFIED ID TYPE FOUND", true);
+                                        break;
+                                }
+                                break;
+                            default:
+                                exitMessage("POST ERROR",true);
+                                break;
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        exitMessage("JSON Error", true);
+                    } catch (IOException i) {
+                        i.printStackTrace();
+                        exitMessage("IO Error", true);
+                    }
+                });
+            }
+        });
+    }
+
+    public void postInsertOrder(String postUrl) throws IOException {
         RequestBody formBody = new FormBody.Builder()
                 .add("isbn", resISBN)
                 .add("id", resID)

@@ -26,8 +26,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class RemoveBook extends AppCompatActivity {
-    public final String postBookSelect= "http://155.42.84.51/MobLib/get_book.php";
-    public final String postBookRemove= "http://155.42.84.51/MobLib/remove_book.php";
+    public String postBookSelect;
+    public String postBookRemove;
 
     TextView isbn;
     TextView title;
@@ -35,16 +35,18 @@ public class RemoveBook extends AppCompatActivity {
     TextView genre;
     TextView prompt;
 
-    String res = "[book isbn]";
-    String postTitle = "";
-    String postAuthor = "";
-    String postGenre = "";
+    String res;
+    String postTitle;
+    String postAuthor;
+    String postGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_book);
 
+        postBookSelect = getString(R.string.url) + "/MobLib/get_book.php";
+        postBookRemove = getString(R.string.url) + "/MobLib/remove_book.php";
         Intent stock = getIntent();
         prompt = findViewById(R.id.prompt);
         isbn = findViewById(R.id.book_isbn);
@@ -56,7 +58,7 @@ public class RemoveBook extends AppCompatActivity {
             res = stock.getStringExtra(MenuStock.SCAN_RESULT);
             postRequest(postBookSelect);
         } catch(IOException e) {
-            exitMessage("Failed to query barcode through catalog");
+            exitMessage("Failed to query barcode through catalog", true);
         }
 
     }
@@ -70,7 +72,7 @@ public class RemoveBook extends AppCompatActivity {
                 try {
                     postRemove(postBookRemove);
                 } catch(IOException e) {
-                    exitMessage("Failed to remove book from catalog");
+                    exitMessage("Failed to remove book from catalog", true);
                 }
                 break;
             default:
@@ -93,12 +95,10 @@ public class RemoveBook extends AppCompatActivity {
 
                 prompt.setText("Are you sure you want to delete this book?");
             } catch(IOException e) {
-                exitMessage("Failed to query barcode through catalog");
+                exitMessage("Failed to query barcode through catalog", true);
             }
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Barcode error: Non-existent or invalid barcode detected!", Toast.LENGTH_SHORT);
-            toast.show();
+            exitMessage("Barcode error: Non-existent or invalid barcode detected!", false);
         }
     }
 
@@ -118,7 +118,7 @@ public class RemoveBook extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
-                exitMessage("failed to connect to webserver");
+                exitMessage("failed to connect to webserver", true);
             }
 
             @Override
@@ -137,7 +137,7 @@ public class RemoveBook extends AppCompatActivity {
                                 postGenre = json.getString("Genre");
 
                                 if(res.length() == 0 || postTitle.length() == 0 || postAuthor.length() == 0 || postGenre.length() == 0) {
-                                    exitMessage("unknown book detected or catalog is empty! Check the catalog in Book Catalog");
+                                    exitMessage("unknown book detected or catalog is empty! Check the catalog in Book Catalog", true);
                                     break;
                                 }
 
@@ -147,16 +147,16 @@ public class RemoveBook extends AppCompatActivity {
                                 genre.setText(postGenre);
                                 break;
                             case("query failed"):
-                                exitMessage("Failed to find book from database. Try adding that book into the database first.");
+                                exitMessage("Failed to find book from database. Try adding that book into the database first.", true);
                                 break;
                             default:
-                                exitMessage("Error: unknown json message string detected");
+                                exitMessage("Error: unknown json message string detected", true);
                                 break;
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        exitMessage("JSON Error: cannot parse json");
+                        exitMessage("JSON Error: cannot parse json", true);
                     }
                 });
             }
@@ -197,13 +197,13 @@ public class RemoveBook extends AppCompatActivity {
                         Log.d("TAG", result);
                         switch(result) {
                             case ("Removal successful"):
-                                exitMessage("Successfully removed order from database");
+                                exitMessage("Successfully removed order from database", true);
                                 break;
                             case("Removal failed"):
-                                exitMessage(result);
+                                exitMessage(result, true);
                                 break;
                             default:
-                                exitMessage("UNKNOWN SQL ERROR");
+                                exitMessage("UNKNOWN SQL ERROR", true);
                                 break;
                         }
 
@@ -216,9 +216,9 @@ public class RemoveBook extends AppCompatActivity {
         });
     }
 
-    public void exitMessage(String msg) {
+    public void exitMessage(String msg, boolean isFinished) {
         Toast exit = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         exit.show();
-        finish();
+        if(isFinished) finish();
     }
 }
